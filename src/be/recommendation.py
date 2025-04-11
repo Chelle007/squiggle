@@ -10,7 +10,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 SERP_API_KEY = os.getenv('SERP_API_KEY')
 gpt_model = "gpt-4o"
 
-def sentiment_analysis_with_keyword(chat_histories, user_data, keyword):
+def preference_analysis_with_keyword(chat_histories, user_data, keyword):
     system_msg = "You are a helpful assistant that is good at recommending gift for a person. Based on user's chat history, preference, and the keyword user entered, you must generate a very detailed and effective keyword to be used in serpapi google shopping search api."
     prompt = f"Chat history: {chat_histories}\nUser preference: {user_data}\nKeyword: {keyword}"
 
@@ -25,7 +25,7 @@ def sentiment_analysis_with_keyword(chat_histories, user_data, keyword):
     
     return response['choices'][0]['message']['content'].strip()
 
-def sentiment_analysis_without_keyword(chat_histories, user_data):
+def preference_analysis_without_keyword(chat_histories, user_data):
     system_msg = "You are a helpful assistant that is good at recommending gifts for a person. Based on user's chat history and preference, you must generate 5 very detailed and effective keywords to be used in serpapi google shopping search api (separated by comma)."
     prompt = f"Chat history: {chat_histories}\nUser preference: {user_data}"
 
@@ -75,7 +75,6 @@ def google_shopping_search(query, num_results = 5):
         product = {
             "name": shorten_text(item.get("title"), 5, 8),
             "product_url": item.get("link"),
-            "shop_name": shorten_text(item.get("source"), 1, 3),
             "img_url": item.get("thumbnail"),
             "price": item.get("price")
         }
