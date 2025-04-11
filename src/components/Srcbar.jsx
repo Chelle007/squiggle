@@ -2,9 +2,12 @@ import { Search } from "lucide-react";
 
 function Srcbar() {
     return (
-        <div>
-            <h1>llalld</h1>
-        </div>
+        <>
+            <div className="flex bg-gray-300 h-12 w-full items-center gap-4 px-4">
+            <Search/>
+            <p>Search</p>
+            </div>
+        </>
     );
 }
 
