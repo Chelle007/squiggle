@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os
-from PIL import Image, ImageOps
 import numpy as np
-import tensorflow as tf
 import openai
 from be.recommendation import GoogleSearch
 from dotenv import load_dotenv
