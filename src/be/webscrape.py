@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from recommendation import shorten_text
 
 def get_amazon_product_details(url):
     chrome_options = Options()
@@ -27,6 +28,7 @@ def get_amazon_product_details(url):
         # Product title
         title_element = wait.until(EC.visibility_of_element_located((By.ID, "productTitle")))
         product_title = title_element.text.strip()
+        shorten_title = shorten_text(product_title, 5, 8)
 
         # Product image
         image = wait.until(EC.presence_of_element_located((By.ID, "landingImage")))
@@ -35,23 +37,24 @@ def get_amazon_product_details(url):
         # Price image
         price_whole = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-whole")))
         price_fraction = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-fraction")))
-        price = price_whole.text.strip() + "." + price_fraction.text.strip()
+        price = "$" + price_whole.text.strip() + "." + price_fraction.text.strip()
 
-        print("✅ Title:", product_title)
-        print("🖼️ Image:", img_src)
-        print("💰 Whole:", price_whole.text.strip())
-        print("💰 Fraction:", price_fraction.text.strip())
-        print("💰 Price:", price)
+        # FOR DEBUG
+        # print("✅ Title:", shorten_title)
+        # print("🖼️ Image:", img_src)
+        # print("💰 Whole:", price_whole.text.strip())
+        # print("💰 Fraction:", price_fraction.text.strip())
+        # print("💰 Price:", price)
 
     except Exception as e:
         print("❌ Error extracting product details:", e)
 
     driver.quit()
     return {
-        "title": product_title,
+        "title": shorten_title,
         "image": img_src,
         "price": price
     }
 
-# Run it!
-get_amazon_product_details("https://www.amazon.sg/UGREEN-Wireless-Ergonomic-Cordless-Chromebook/dp/B09SFPJS27")
+# FOR DEBUG
+# print(get_amazon_product_details("https://www.amazon.sg/UGREEN-Wireless-Ergonomic-Cordless-Chromebook/dp/B09SFPJS27"))
