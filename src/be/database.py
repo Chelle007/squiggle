@@ -1,3 +1,5 @@
+# DUMMY DATA
+
 wishlist = {
     "user_a": [
         {
@@ -79,6 +81,9 @@ user_data = {
     },
 }
 
+
+# FUNCTIONS
+
 def get_chat_history(user):
     return chat_history.get(user)
 
@@ -99,3 +104,29 @@ def add_wishlist(user, name, img_url, shop_url, price, notes, added_by):
         "joined_users": []
     }
     wishlist.get(user, []).append(item)
+
+def quick_join(user, budget):
+    items = wishlist.get("user_a", [])
+    
+    # Filter out items without a valid price, then sort by price descending
+    valid_items = []
+    for item in items:
+        price_str = item.get("price", "")
+        try:
+            price = float(price_str[1:])
+            item["parsed_price"] = price
+            valid_items.append(item)
+        except (ValueError, TypeError):
+            continue
+    sorted_items = sorted(valid_items, key=lambda x: x["parsed_price"], reverse=True)
+
+    # Find the most expensive item that fits the budget per person
+    for item in sorted_items:
+        total_people = len(item["joined_users"]) + 1
+        if item["parsed_price"] / total_people <= budget:
+            if user not in item["joined_users"]:
+                item["joined_users"].append(user)
+            del item["parsed_price"]
+            return item
+
+    return None
