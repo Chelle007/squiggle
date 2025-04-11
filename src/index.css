@@ -1,70 +1,109 @@
 @import "tailwindcss";
 
+/* 
+    use the following syntax to use the custom colors in tailwind classes
+    bg-[var(--color-c-black-1)]
+*/
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    --color-c-green-1: #C8FF9E;
+    --color-c-green-2: #F5FFEC;
+    --color-c-green-2: #2B3A1D;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    --color-c-white-1: #FFFFFF;
+    --color-c-white-2: #F7F7F7;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    --color-c-black-1: #333333;
+    --color-c-black-2: #777777;
+    --color-c-black-3: #EAEAEA;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+    --font-primary: "Roboto", "Times New Roman", serif;
+    /* --font-secondary: "Nunito", "Helvetica", sans-serif;
+    --font-tertiary: "Whisper", "Brush Script MT", cursive; */
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    --text-c-p1: 24px;
+    --text-c-p2: 20px;
+    --text-c-p3: 16px;
+    --text-c-p4: 14px;
+    --text-c-p5: 12px;
+    --text-c-p6: 10px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+@layer base {
+    h1 {
+        font-family: var(--font-primary);
+        font-size: var(--text-4xl);
+        line-height: 100%;
+    }
+    h2 {
+        font-family: var(--font-primary);
+        font-size: var(--text-3xl);
+        line-height: 100%;
+    }
+    h3 {
+        font-family: var(--font-primary);
+        font-size: var(--text-2xl);
+    }
+    h4 {
+        font-family: var(--font-primary);
+        font-size: var(--text-xl);
+    }
+    h5 {
+        font-family: var(--font-primary);
+        font-size: var(--text-lg);
+    }
+    h6 {
+        font-family: var(--font-primary);
+        font-size: var(--text-base);
+    }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+    p {
+        font-family: var(--font-primary);
+        font-size: var(--text-c-p3);
+    }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    a {
+        font-family: var(--font-primary);
+        font-size: var(--text-c-p3);
+    }
+
+    span {
+        font-family: var(--font-primary);
+        font-size: var(--text-c-p3);
+    }
+
+    body {
+        background-color: var(--color-c-white-1);
+        color: var(--color-c-black-1);
+    }
+
+
+    @media (min-width: 768px) {
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-3xl); }
+        h4 { font-size: var(--text-2xl); }
+        h5 { font-size: var(--text-xl); }
+        h6 { font-size: var(--text-lg); }
+        p, a { font-size: var(--text-c-p3); }
+    }
+
+    @media (min-width: 1024px) {
+        h1 { font-size: var(--text-6xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-3xl); }
+        h4 { font-size: var(--text-2xl); }
+        h5 { font-size: var(--text-xl); }
+        h6 { font-size: var(--text-lg); }
+        p, a { font-size: var(--text-c-p3); }
+    }
+    
+    @media (min-width: 1536px) {
+        h1 { font-size: var(--text-8xl); }
+        h2 { font-size: var(--text-5xl); }
+        h3 { font-size: var(--text-4xl); }
+        h4 { font-size: var(--text-3xl); }
+        h5 { font-size: var(--text-2xl); }
+        h6 { font-size: var(--text-xl); }
+        p, a { font-size: var(--text-c-p2); }
+    }
 }
