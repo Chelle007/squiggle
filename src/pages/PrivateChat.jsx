@@ -10,18 +10,33 @@ const chat_histories = [[
     },
     {
         "timestamp": "10/04/2025, 11:33:22 AM",
-        "message": "Hmm noted, I don't have sunglasses and hat, maybe I will search for it at Bali.",
+        "message": "Sunscreen, sunglasses, hat, powerbank, swimwear, raincoat",
         "sender": "self"
     },
     {
         "timestamp": "10/04/2025, 11:33:23 AM",
-        "message": "Ohhh yeah beach towel! Will buy it later too once I reach Bali.",
+        "message": "Hmm noted, I don't have sunglasses and hat, maybe I will search for it at Bali.",
         "sender": "friend"
     },
     {
         "timestamp": "10/04/2025, 11:33:24 AM",
-        "message": "Huh pattern? I like flower patterns.",
+        "message": "Don't forget to bring beach towel too.",
         "sender": "self"
+    },
+    {
+        "timestamp": "10/04/2025, 11:33:25 AM",
+        "message": "Ohhh yeah beach towel! Will buy it later too once I reach Bali.",
+        "sender": "friend"
+    },
+    {
+        "timestamp": "10/04/2025, 11:33:26 AM",
+        "message": "What pattern do you like?",
+        "sender": "self"
+    },
+    {
+        "timestamp": "10/04/2025, 11:33:27 AM",
+        "message": "Huh pattern? I like flower patterns.",
+        "sender": "friend"
     }
 ]];
 
