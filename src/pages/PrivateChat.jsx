@@ -1,6 +1,6 @@
 import { ChevronLeft, Video, Phone, Plus, Camera, Mic } from 'lucide-react';
 import ChatBubble from '../components/ChatBubble.jsx';
-import ProfilePicture from '../assets/user3.jpg';
+import ProfilePicture from '../assets/user7.jpg';
 
 const chat_histories = [[
     {
@@ -55,7 +55,7 @@ export default function PrivateChat() {
                             alt="Profile Picture"
                             className="w-12 h-12 object-cover rounded-full"
                         />
-                        <h3 className="font-bold">Timmy Thyme</h3>
+                        <h3 className="font-bold">Rachel</h3>
                     </div>
                     <div className="flex items-center gap-4">
                         <Video size="24" />
@@ -72,7 +72,7 @@ export default function PrivateChat() {
                         message={msg.message}
                         isSender={msg.sender === 'self'}
                         profile={{
-                            name: msg.sender === 'self' ? 'You' : 'Timmy Thyme',
+                            name: msg.sender === 'self' ? 'You' : 'Rachel',
                             image: msg.sender === 'self' ? null : ProfilePicture,
                             timestamp: msg.timestamp
                         }}
