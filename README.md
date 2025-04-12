@@ -70,15 +70,11 @@ python app.py
 ## 🔧 Environment Variables
 Frontend (client/.env)
 ```ini
-Copy
-Edit
 VITE_API_URL=http://localhost:5000
 ```
 
 Backend (server/.env)
 ```ini
-Copy
-Edit
 FLASK_ENV=development
 SECRET_KEY=your-secret-key
 ```
