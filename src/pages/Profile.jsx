@@ -52,7 +52,11 @@ export default function Profile() {
                 </div>
             </div>
 
-            <ProfileDescription />
+            <ProfileDescription
+                fav_color="Blue, Mint Green"
+                fav_animal="Capybara"
+                hobbies="Reading, Hiking, Painting"
+            />
 
             <br />
             <br />

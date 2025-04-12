@@ -63,14 +63,16 @@ user_data = {
     "user_a": {
         "gender": "male",
         "age": "24",
-        "favorite_color": "Red, Green, Blue",
-        "favorite_animal": "Otter, Elephant, Zebra",
-        "Hobbies": "Hiking, Swimming, Reading",
+        "favorite_color": "Blue, Mint Green",
+        "favorite_animal": "Capybara",
+        "Hobbies": "Reading, Hiking, Painting",
     },
     "user_b": {
         "gender": "female",
         "age": "19",
-        "favorite_color": "blue",
+        "favorite_color": "White, Pink",
+        "favorite_animal": "Bunny",
+        "Hobbies": "Reading",
     },
 }
 
