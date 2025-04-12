@@ -93,7 +93,7 @@ export default function FriendProfile() {
                                 key={index}
                                 image={item.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
                                 title={item.name}
-                                price={`S${item.price}`}
+                                price={`${item.price}`}
                             />
                         ))
                     ) : (
