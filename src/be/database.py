@@ -14,7 +14,7 @@ wishlist = {
     ],
     "user_b": [
         {
-            "name": "Jellycat Blossom Blush Bunny 'Cherry'",
+            "name": "Jellycat Bunny 'Cherry'",
             "img_url": "https://cdn11.bigcommerce.com/s-23s5gfmhr7/images/stencil/1280x1280/products/1692/49226/BASHFUL_BLOSSOMS_BLUSH_CHERRY__56734.1734429598.jpg?c=1",
             "shop_url": "https://shopee.sg/product/342358707/28224693907?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkY0N5akVpcE5OamJEdjRRTHBOTzhmbXVHczAwMzlGL0dNY09HQWRmNDU2a09vVmMzemt1MXNMVjArMWk2RzBTaTNXMjltMFN1VTlvbzdyTjZQMFlvTWxxRHZDMUdjMEM5L1dFaGczQTc1dTM&gad_source=1&gbraid=0AAAAADPpRQRKQ-ve0Q1RqdIOGucjnHk8v&gclid=CjwKCAjw--K_BhB5EiwAuwYoysr4xaLhroJ0dqSQ2RPRRMcLsbZGUmW-21fzscW_4AyDGHFD4m4VvxoCT64QAvD_BwE",
             "price": "S$57.00",
