@@ -1,17 +1,15 @@
-function getWishlist(user) {
-    fetch(`http://127.0.0.1:5000/get-user-wishlist?user=${encodeURIComponent(user)}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Wishlist: ", data);
-        })
-        .catch(error => {
-            console.error("Error fetching wishlist:", error);
-        });
+export async function getWishlist(user) {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/get-user-wishlist?user=${encodeURIComponent(user)}`);
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching wishlist:", error);
+        return [];
+    }
 }
 
 function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
