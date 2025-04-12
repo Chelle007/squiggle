@@ -49,7 +49,6 @@ def generate_recommendation_without_keyword():
     serpapi_list = []
 
     for search_keyword in search_keyword_list:
-        print("SEARCH " + search_keyword)
         serpapi_list.append(google_shopping_search(search_keyword, 1)[0])
 
     return jsonify(serpapi_list)

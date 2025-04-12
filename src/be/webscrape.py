@@ -34,17 +34,10 @@ def get_amazon_product_details(url):
         image = wait.until(EC.presence_of_element_located((By.ID, "landingImage")))
         img_src = image.get_attribute("src")
 
-        # Price image
+        # Price
         price_whole = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-whole")))
         price_fraction = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-fraction")))
         price = "S$" + price_whole.text.strip() + "." + price_fraction.text.strip()
-
-        # FOR DEBUG
-        # print("✅ Title:", shorten_title)
-        # print("🖼️ Image:", img_src)
-        # print("💰 Whole:", price_whole.text.strip())
-        # print("💰 Fraction:", price_fraction.text.strip())
-        # print("💰 Price:", price)
 
     except Exception as e:
         print("❌ Error extracting product details:", e)
