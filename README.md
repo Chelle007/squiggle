@@ -51,30 +51,29 @@ git clone https://github.com/your-username/squiggle.git
 cd squiggle
 ```
 
-### 2. Setup the Frontend
+### 2. Setup the Backend
 ```bash
-cd client
+python -m venv venv
+source venv/bin/activate     # Windows: venv\\Scripts\\activate
+pip install -r requirements.txt
+cd src/be
+python app.py
+```
+
+### 3. Setup the Frontend
+```bash
+cd ../..
 npm install
 npm run dev
 ```
 
-### 3. Setup the Backend
-```bash
-cd ../server
-python -m venv venv
-source venv/bin/activate     # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
-```
+### 🚀 Run the App
+- Backend: `http://127.0.0.1:5000/`
+- Frontend: `http://localhost:5173/`
 
 ## 🔧 Environment Variables
-Frontend (client/.env)
-```ini
-VITE_API_URL=http://localhost:5000
-```
-
 Backend (server/.env)
 ```ini
-FLASK_ENV=development
-SECRET_KEY=your-secret-key
+OPENAI_API_KEY=your-secret-key
+SERP_API_KEY=your-secret-key
 ```
