@@ -3,7 +3,7 @@
 wishlist = {
     "user_a": [
         {
-            "name": "Supima Cotton Crew Neck T-Shirt",
+            "name": "Supima Crew Neck T-Shirt",
             "img_url": "https://www.uniqlo.com/jp/ja/contents/feature/masterpiece/common/img/product/item_05_kv.jpg?240112",
             "shop_url": "https://www.uniqlo.com/sg/en/products/E455365-000?colorCode=COL65&sizeCode=SMA005&istCompanyId=4d9c5d8f-302d-4f66-8407-acd79c161268&istFeedId=a288f40d-0d89-4fe6-ab91-ee14c78b59b2&istItemId=qwmqmlppi&istBid=t",
             "price": "S$19.90",
@@ -35,22 +35,18 @@ wishlist = {
 }
 
 chat_history = {
-    "user_a": [[{
+    "user_b": [[{
             "timestamp": "10/04/2025, 11:33:22 AM",
             "message": "Sunscreen, sunglasses, hat, powerbank, swimwear, raincoat"
         },
         {
             "timestamp": "10/04/2025, 11:33:24 AM",
             "message": "Don't forget to bring beach towel too."
-        },
-        {
-            "timestamp": "10/04/2025, 11:33:26 AM",
-            "message": "What pattern do you like?"
-        }]
+        },]
     ],
-    "user_b": [[{
+    "user_a": [[{
             "timestamp": "10/04/2025, 11:33:21 AM",
-            "message": "Hii I am going to travel to Bali next week, do you have any ideas regarding things that I should bring?"
+            "message": "Hi! I am going to travel to Bali next week, do you have any ideas what I should bring?"
         },
         {
             "timestamp": "10/04/2025, 11:33:23 AM",
@@ -58,12 +54,8 @@ chat_history = {
         },
         {
             "timestamp": "10/04/2025, 11:33:25 AM",
-            "message": "Ohhh yeah beach towel! Will buy it later once I reach Bali."
-        },
-        {
-            "timestamp": "10/04/2025, 11:33:27 AM",
-            "message": "Huh pattern? I like flower patterns."
-        }]
+            "message": "Okay, will buy beach towel later too."
+        },]
     ],
 }
 
