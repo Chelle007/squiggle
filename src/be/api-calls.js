@@ -42,7 +42,40 @@ function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
         });
 }
 
-function getProductDetailsFromShopUrl(shopUrl) {
+export async function generateRecommendation(user, searchPrompt) {
+    let fetchUrl = "";
+    let requestBody = { user };
+
+    if (searchPrompt.trim() !== '' && searchPrompt !== null) {
+        fetchUrl = "http://127.0.0.1:5000/generate-recommendation-with-keyword";
+        requestBody.keyword = searchPrompt;
+    } else {
+        fetchUrl = "http://127.0.0.1:5000/generate-recommendation-without-keyword";
+    }
+
+    try {
+        const response = await fetch(fetchUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Recommendations:", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching recommendations:", error);
+        return null;
+    }
+}
+
+export async function getProductDetailsFromShopUrl(shopUrl) {
     fetch(`http://127.0.0.1:5000/get-amazon-product-details?shopUrl=${encodeURIComponent(shopUrl)}`)
         .then(response => {
             if (!response.ok) {
@@ -55,39 +88,6 @@ function getProductDetailsFromShopUrl(shopUrl) {
         })
         .catch(error => {
             console.error("Error fetching product details:", error);
-        });
-}
-
-function generateRecommendations(user) {
-    const userKeyword = ""; // TODO: get from DOM
-    let fetchUrl = "";
-    let requestBody = { user };
-
-    if (userKeyword) {
-        fetchUrl = "http://127.0.0.1:5000/generate-recommendation-with-keyword";
-        requestBody.keyword = userKeyword;
-    } else {
-        fetchUrl = "http://127.0.0.1:5000/generate-recommendation-without-keyword";
-    }
-
-    fetch(fetchUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(requestBody)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Recommendations:", data);
-        })
-        .catch(error => {
-            console.error("Error fetching recommendations:", error);
         });
 }
 

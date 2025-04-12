@@ -49,14 +49,15 @@ def generate_recommendation_without_keyword():
     serpapi_list = []
 
     for search_keyword in search_keyword_list:
-        serpapi_list.append(google_shopping_search(search_keyword, 1))
+        serpapi_list.append(google_shopping_search(search_keyword, 1)[0])
 
     return jsonify(serpapi_list)
 
 
-@app.route('/get-amazon-product-details', methods=['GET'])
+@app.route('/get-amazon-product-details', methods=['POST'])
 def get_amazon_product_details_route():
-    shop_link = request.args.get("shop_link")
+    data = request.json
+    shop_link = data.get("shop_link")
     return jsonify(scrape_amazon_product_details(shop_link))
 
 

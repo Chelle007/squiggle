@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { generateRecommendation, getProductDetailsFromShopUrl } from "../be/api-calls";
 
 export default function AddWishlist() {
     const [searchTerm, setSearchTerm] = useState("");
     const [recommendations, setRecommendations] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -14,40 +16,40 @@ export default function AddWishlist() {
         notes: "",
     });
 
-    const generateRecommendations = () => {
-        const fakeData = [
-            {
-                name: "Pink Nike Shoes",
-                link: "https://nike.com/item1",
-                price: "100.00",
-                image: "https://via.placeholder.com/300x200?text=Item+1",
-            },
-            {
-                name: "Stylish Hat",
-                link: "https://example.com/hat",
-                price: "25.00",
-                image: "https://via.placeholder.com/300x200?text=Item+2",
-            },
-            {
-                name: "Trendy Jacket",
-                link: "https://example.com/jacket",
-                price: "89.99",
-                image: "https://via.placeholder.com/300x200?text=Item+3",
-            },
-        ];
-        setRecommendations(fakeData);
-        setCurrentIndex(0);
-        updateFormData(fakeData[0]);
+    const userWishlistSearch = async () => {
+        setLoading(true);
+        try {
+            if (searchTerm.includes('www.amazon')) {
+                const result = await getProductDetailsFromShopUrl(searchTerm);
+                updateFormData(result)
+            } else {
+                const user = "user_a";
+                const results = await generateRecommendation(user, searchTerm);
+
+                if (results) {
+                    setRecommendations(results);
+                    setCurrentIndex(0);
+                    updateFormData(results[0]);
+                } else {
+                    setRecommendations([]);
+                }
+            }
+        } catch (error) {
+            console.error("Failed to fetch wishlist recommendations / webscraping result:", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const updateFormData = (item) => {
         setFormData({
-            name: item.name,
-            link: item.link,
-            price: item.price,
+            name: item.name || "",
+            link: item.link || "",
+            price: item.price || "",
             notes: "",
         });
     };
+
 
     const goTo = (index) => {
         if (index >= 0 && index < recommendations.length) {
@@ -69,9 +71,15 @@ export default function AddWishlist() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button onClick={generateRecommendations}>
-                    <FiSearch className="text-gray-500 text-lg" />
+                <button onClick={userWishlistSearch} disabled={loading}>
+                    {loading ? (
+                        <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+                    ) : (
+                        <FiSearch className="text-gray-500 text-lg" />
+                    )}
+
                 </button>
+
             </div>
 
             {/* Swiper Section */}
@@ -175,16 +183,6 @@ export default function AddWishlist() {
                     <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
                     <button className="w-1/2 ml-2 py-2 rounded bg-green-200">Save</button>
                 </div>
-            </div>
-
-            {/* Bottom Nav */}
-            <div className="fixed bottom-0 left-0 right-0 bg-white shadow-md flex justify-around py-2 border-t">
-                {["Contact", "Calls", "Chats", "Profile", "Settings"].map((label, i) => (
-                    <div key={i} className="flex flex-col items-center text-xs text-gray-600">
-                        <div className="w-6 h-6 bg-gray-300 rounded-full mb-1"></div>
-                        <span>{label}</span>
-                    </div>
-                ))}
             </div>
         </div>
     );
