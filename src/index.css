@@ -34,39 +34,39 @@
     }
     h2 {
         font-family: var(--font-primary);
-        font-size: var(--text-3xl);
+        font-size: var(--text-2xl);
         line-height: 100%;
     }
     h3 {
         font-family: var(--font-primary);
-        font-size: var(--text-2xl);
+        font-size: var(--text-base);
     }
     h4 {
         font-family: var(--font-primary);
-        font-size: var(--text-xl);
+        font-size: var(--text-xs);
     }
     h5 {
         font-family: var(--font-primary);
-        font-size: var(--text-lg);
+        font-size: var(--text-xs);
     }
     h6 {
         font-family: var(--font-primary);
-        font-size: var(--text-base);
+        font-size: var(--text-xs);
     }
 
     p {
         font-family: var(--font-primary);
-        font-size: var(--text-c-p3);
+        font-size: var(--text-base);
     }
 
     a {
         font-family: var(--font-primary);
-        font-size: var(--text-c-p3);
+        font-size: var(--text-base);
     }
 
     span {
         font-family: var(--font-primary);
-        font-size: var(--text-c-p3);
+        font-size: var(--text-base);
     }
 
     body {
@@ -82,7 +82,7 @@
         h4 { font-size: var(--text-2xl); }
         h5 { font-size: var(--text-xl); }
         h6 { font-size: var(--text-lg); }
-        p, a { font-size: var(--text-c-p3); }
+        p, a { font-size: var(--text-base); }
     }
 
     @media (min-width: 1024px) {
@@ -92,7 +92,7 @@
         h4 { font-size: var(--text-2xl); }
         h5 { font-size: var(--text-xl); }
         h6 { font-size: var(--text-lg); }
-        p, a { font-size: var(--text-c-p3); }
+        p, a { font-size: var(--text-base); }
     }
     
     @media (min-width: 1536px) {

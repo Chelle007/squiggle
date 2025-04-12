@@ -75,8 +75,8 @@ export default function PrivateChat() {
                             className="w-18 h-12 object-cover rounded-[8px]"
                         />
                         <div>
-                            <h3 className="font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">Raybands RB3557 Sun Glasses</h3>
-                            <p className="text-[var(--color-c-black-2)] text-[var(--text-c-p4)] whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px]">You, Timmy Thyme, Chilli Charles</p>
+                            <h3 className="text-[var(--text-c-p2)]  font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">Raybands RB3557 Sun Glasses</h3>
+                            <p className="text-[var(--color-c-black-2)]  whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px]">You, Timmy Thyme, Chilli Charles</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
