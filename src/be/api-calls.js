@@ -12,7 +12,7 @@ export async function getWishlist(user) {
     }
 }
 
-function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
+export async function addWishlist(user, name, img_url, shop_url, price, notes, added_by) {
     fetch('http://127.0.0.1:5000/add-user-wishlist', {
         method: 'POST',
         headers: {
@@ -21,11 +21,11 @@ function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
         body: JSON.stringify({
             user,
             name,
-            imgUrl,
-            shopUrl,
+            img_url,
+            shop_url,
             price,
             notes,
-            addedBy
+            added_by
         })
     })
         .then(response => {

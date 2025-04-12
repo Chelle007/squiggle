@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 
-import { generateRecommendation, getProductDetailsFromShopUrl } from "../be/api-calls";
+import { generateRecommendation, getProductDetailsFromShopUrl, addWishlist } from "../be/api-calls";
 import RecommendationCard from "../components/RecommendationCard";
 
 
@@ -73,6 +73,23 @@ export default function AddWishlist() {
             price: item.price || "",
             notes: "",
         });
+    };
+
+    const handleSaveClick = () => {
+        const user = "user_a";
+        const addedBy = "user_a";
+        const imgUrl = SelectedImage;
+        console.log("IMG URL " + imgUrl)
+
+        addWishlist(
+            user,
+            formData.name,
+            imgUrl,
+            formData.shop_url,
+            formData.price,
+            formData.notes,
+            addedBy
+        );
     };
 
     return (
@@ -180,7 +197,7 @@ export default function AddWishlist() {
                         </div>
                         <div className="flex justify-between mt-6">
                             <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
-                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200">Save</button>
+                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200" onClick={handleSaveClick}>Save</button>
                         </div>
                     </div>
                 </div>
