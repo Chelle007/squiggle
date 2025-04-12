@@ -34,12 +34,14 @@
 
 ## 🛠 Tech Stack
 
-| Tech             | Purpose                     |
-|------------------|-----------------------------|
-| React + Vite     | Frontend framework           |
-| TailwindCSS      | Styling                      |
-| Flask (Python)   | Backend API                  |
-| SQLite / PostgreSQL | Database (depending on setup) |
+| Tech             | Purpose                                                         |
+|------------------|-----------------------------------------------------------------|
+| React + Vite     | Frontend framework                                              |
+| TailwindCSS      | Styling                                                         |
+| Flask (Python)   | Backend API                                                     |
+| Selenium         | Scraping dynamic product pages (e.g., Amazon)                   |
+| SerpAPI          | Retrieving product and search data from Google, Amazon, etc.    |
+| OpenAI API       | Generating wishlist recommendations from user prompts or links  |
 
 ---
 
