@@ -5,9 +5,9 @@ export default function ProfileDescription() {
 
             {[
                 // { label: "🎂 Birthdate", value: "12 Apr 2001 (24 years old)" },
-                { label: "🎨 Favorite Colors", value: "Red, Green, Blue" },
-                { label: "🦓 Favorite Animals", value: "Otter, Elephant, Zebra" },
-                { label: "🏕️ Hobbies", value: "Hiking, Swimming, Reading" }
+                { label: "🎨 Favorite Colors", value: "White" },
+                { label: "🦓 Favorite Animals", value: "Bunny" },
+                { label: "🏕️ Hobbies", value: "Gymnastic" }
             ].map((item, index) => (
                 <div key={index} className="mb-2">
                     <h3 className="font-bold">{item.label}</h3>
