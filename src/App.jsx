@@ -12,6 +12,7 @@ import AddWishlist from './pages/AddWishlist';
 import PrivateChat from './pages/PrivateChat';
 import FriendProfile from './pages/FriendProfile';
 import SubGroupChat from './pages/SubGroupChat';
+import SubGroupChatBunny from './pages/SubGroupChatBunny';
 
 // Main layout
 function Layout({ children }) {
@@ -36,6 +37,7 @@ function App() {
         <Route path="/private-chat" element={<PrivateChat />} />
         <Route path="/friend-profile" element={<Layout><FriendProfile /></Layout>} />
         <Route path="/sub-group-chat" element={<SubGroupChat />} />
+        <Route path="/sub-group-chat/bunny" element={<SubGroupChatBunny />} />
       </Routes>
   </BrowserRouter>
   )

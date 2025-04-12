@@ -98,8 +98,8 @@ export async function getProductDetailsFromShopUrl(shopUrl) {
     }
 }
 
-function quickJoin(user, budget) {
-    fetch("http://127.0.0.1:5000/quick-join", {
+export function quickJoin(user, budget) {
+    return fetch("http://127.0.0.1:5000/quick-join", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -117,8 +117,10 @@ function quickJoin(user, budget) {
         })
         .then(data => {
             console.log("Quick join result:", data);
+            return data; // Ensure you return the data here
         })
         .catch(error => {
             console.error("Error in quick join:", error);
+            throw error; // Re-throw error to be handled in the calling function
         });
 }
