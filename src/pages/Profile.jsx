@@ -1,14 +1,23 @@
 import ProfileHeader from '../components/ProfileHeader';
 import ProfileDescription from '../components/ProfileDescription';
 import SelfWishlist from '../components/SelfWishlist';
+import { getWishlist } from '../be/api-calls';
 
-import jordanImg from '../assets/products/jordan.png'; 
-import otterPlush from '../assets/products/otter-plushie.png'; 
-import zebraLamp from '../assets/products/zebra-lamp.png'; 
+import jordanImg from '../assets/products/jordan.png';
+import otterPlush from '../assets/products/otter-plushie.png';
+import zebraLamp from '../assets/products/zebra-lamp.png';
 
+import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 
 export default function Profile() {
+    const [wishlist, setWishlist] = useState([]);
+    const user = "user_a";
+
+    useEffect(() => {
+        getWishlist(user).then(setWishlist);
+    }, [user]);
+
     return (
         <>
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
@@ -22,19 +31,23 @@ export default function Profile() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                    <SelfWishlist image={jordanImg} title="Nike Shoes" price="S$ 269.00" />
-                    <SelfWishlist image={zebraLamp} title="Zebra Desk Lamp" price="S$ 35.99" />
-                    <SelfWishlist image={otterPlush} title="Otter Plushie" price="S$ 80.00" />
+                    {wishlist.length > 0 ? (
+                        wishlist.map((item, index) => (
+                            <SelfWishlist
+                                key={index}
+                                image={item.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
+                                title={item.name}
+                                price={`S${item.price}`}
+                            />
+                        ))
+                    ) : (
+                        <p className="col-span-2 text-sm text-gray-500">No wishlist items found.</p>
+                    )}
                 </div>
-                
-                {/* 
-                <SelfWishlist image={colorPens} title="Premium Brush Pen Set" price="S$ 100.00" />
-                <SelfWishlist image={elephantMug} title="Elephant Ceramic Mug" price="S$ 100.00" />
-                <SelfWishlist image={hikingBag} title="Waterproof Hiking Backpack" price="S$ 100.00" /> */}
             </div>
 
             <ProfileDescription />
-            
+
             <br />
             <br />
             <br />
