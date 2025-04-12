@@ -54,8 +54,8 @@ export default function PrivateChat() {
     return (
         <div className="relative h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: `url(${ChatBackground})` }}>
             {/* Top bar */}
-            <div className="fixed top-0 left-0 right-0 h-32 p-4 bg-white/30 backdrop-blur-md z-10">
-                <div className="flex items-center justify-between w-full h-full">
+            <div className="flex items-end fixed top-0 left-0 right-0 h-32 p-4 bg-white/30 backdrop-blur-md z-10">
+                <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-4">
                         <button onClick={handleBack} className="text-[var(--color-c-black-2)]">
                             <ChevronLeft size="24" />
@@ -69,7 +69,7 @@ export default function PrivateChat() {
                         </Link>
                         <Link to='/friend-profile'>
                             <div>
-                                <h3 className="font-bold">Rachel</h3>
+                                <h3 className="font-bold">Rachel Green</h3>
                             </div>
                         </Link>
                     </div>
