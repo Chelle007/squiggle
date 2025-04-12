@@ -13,6 +13,7 @@ export default function Chats() {
         {image: Profile, name: "Rachel Green", message: "Hell yea, dude!"},
         {image: Profile, name: "Rachel Green", message: "Hell yea, dude!"},
         {image: Profile, name: "Rachel Green", message: "Hell yea, dude!"},
+        {image: Profile, name: "Rachel Green", message: "Hell yea, dude!"},
     ];
 
     return (
@@ -22,7 +23,7 @@ export default function Chats() {
         </div>
             <Srcbar/>
             <div className="flex gap-2 py-4">
-                <Filter color="bg-green-300" text="All" />
+                <Filter color="bg-[#C8FF9E]" text="All" />
                 <Filter color="bg-gray-300" text="Groups" />
                 <Filter color="bg-gray-300" text="Unread" />
                 <Filter color="bg-gray-300" text="Favorites" />
