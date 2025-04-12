@@ -1,6 +1,7 @@
 import { ChevronLeft, Video, Phone, Plus, Camera, Mic } from 'lucide-react';
 import ChatBubble from '../components/ChatBubble.jsx';
 import ProfilePicture from '../assets/user7.jpg';
+import ChatBackground from '../assets/backdrop.jpg';
 
 const chat_histories = [[
     {
@@ -41,21 +42,23 @@ const chat_histories = [[
 ]];
 
 export default function PrivateChat() {
-    const messages = chat_histories[0]; // Assuming you only have one chat history for now
+    const messages = chat_histories[0];
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="relative h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: `url(${ChatBackground})` }}>
             {/* Top bar */}
-            <div className="flex items-end h-32 p-4 bg-[var(--color-c-black-3)]">
+            <div className="flex items-end h-32 p-4 bg-[var(--color-c-black-3)] bg-opacity-20">
                 <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-4">
                         <ChevronLeft size="24" />
                         <img
                             src={ProfilePicture}
-                            alt="Profile Picture"
+                            alt="Profile"
                             className="w-12 h-12 object-cover rounded-full"
                         />
-                        <h3 className="font-bold">Rachel</h3>
+                        <div>
+                            <h3 className="font-bold">Rachel</h3>
+                        </div>
                     </div>
                     <div className="flex items-center gap-4">
                         <Video size="24" />
@@ -65,25 +68,29 @@ export default function PrivateChat() {
             </div>
 
             {/* Chat section */}
-            <div className="flex flex-col gap-4 p-4 overflow-y-auto flex-grow">
-                {messages.map((msg, index) => (
-                    <ChatBubble
-                        key={index}
-                        message={msg.message}
-                        isSender={msg.sender === 'self'}
-                        profile={{
-                            name: msg.sender === 'self' ? 'You' : 'Rachel',
-                            image: msg.sender === 'self' ? null : ProfilePicture,
-                            timestamp: msg.timestamp
-                        }}
-                    />
-                ))}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                {messages.length === 0 ? (
+                    <p className="text-center text-gray-500">No messages</p>
+                ) : (
+                    messages.map((msg, index) => (
+                        <ChatBubble
+                            key={index}
+                            message={msg.message}
+                            isSender={msg.sender === 'self'}
+                            profile={{
+                                name: msg.sender === 'self' ? 'You' : 'Rachel',
+                                image: msg.sender === 'self' ? null : ProfilePicture,
+                                timestamp: msg.timestamp
+                            }}
+                        />
+                    ))
+                )}
             </div>
 
             {/* Chat input bar */}
-            <div className="h-20 bg-[var(--color-c-black-3)] flex items-center justify-center gap-4 px-4">
+            <div className="sticky bottom-0 h-20 bg-[var(--color-c-black-3)] bg-opacity-20 backdrop-blur-md flex items-center justify-center gap-4 px-4">
                 <Plus />
-                <div className="h-8 w-80 bg-[var(--color-c-white-1)] rounded-full px-4 place-content-center">
+                <div className="h-10 w-80 bg-[var(--color-c-white-1)] rounded-full px-4 flex items-center">
                     <span className="text-[var(--color-c-black-2)]">Enter a message</span>
                 </div>
                 <Camera />
