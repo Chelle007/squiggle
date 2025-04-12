@@ -21,7 +21,7 @@ export default function RecommendationCard({ image, title, price, link, onClick 
             <div className="px-4 pb-2 text-center">
                 <h5 className="text-xl font-semibold tracking-tight text-gray-900">{title}</h5>
                 <div className="items-center">
-                    <span className="font-bold text-gray-900">{"S$" + price}</span>
+                    <span className="font-bold text-gray-900">{price}</span>
                 </div>
             </div>
         </div>

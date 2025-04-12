@@ -12,7 +12,7 @@ export async function getWishlist(user) {
     }
 }
 
-function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
+export async function addWishlist(user, name, img_url, shop_url, price, notes, added_by) {
     fetch('http://127.0.0.1:5000/add-user-wishlist', {
         method: 'POST',
         headers: {
@@ -21,11 +21,11 @@ function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
         body: JSON.stringify({
             user,
             name,
-            imgUrl,
-            shopUrl,
+            img_url,
+            shop_url,
             price,
             notes,
-            addedBy
+            added_by
         })
     })
         .then(response => {
@@ -42,53 +42,60 @@ function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
         });
 }
 
-function getProductDetailsFromShopUrl(shopUrl) {
-    fetch(`http://127.0.0.1:5000/get-amazon-product-details?shopUrl=${encodeURIComponent(shopUrl)}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Product details: ", data);
-        })
-        .catch(error => {
-            console.error("Error fetching product details:", error);
-        });
-}
-
-function generateRecommendations(user) {
-    const userKeyword = ""; // TODO: get from DOM
+export async function generateRecommendation(user, searchPrompt) {
     let fetchUrl = "";
     let requestBody = { user };
 
-    if (userKeyword) {
+    if (searchPrompt.trim() !== '' && searchPrompt !== null) {
         fetchUrl = "http://127.0.0.1:5000/generate-recommendation-with-keyword";
-        requestBody.keyword = userKeyword;
+        requestBody.keyword = searchPrompt;
     } else {
         fetchUrl = "http://127.0.0.1:5000/generate-recommendation-without-keyword";
     }
 
-    fetch(fetchUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(requestBody)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Recommendations:", data);
-        })
-        .catch(error => {
-            console.error("Error fetching recommendations:", error);
+    try {
+        const response = await fetch(fetchUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestBody)
         });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Recommendations:", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching recommendations:", error);
+        return null;
+    }
+}
+
+export async function getProductDetailsFromShopUrl(shopUrl) {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/get-amazon-product-details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ shop_link: shopUrl })
+        });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Product details: ", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching product details:", error);
+        throw error;
+    }
 }
 
 function quickJoin(user, budget) {

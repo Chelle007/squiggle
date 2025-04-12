@@ -26,7 +26,7 @@ def preference_analysis_with_keyword(chat_histories, user_data, keyword):
     return response['choices'][0]['message']['content'].strip()
 
 def preference_analysis_without_keyword(chat_histories, user_data):
-    system_msg = "You are a helpful assistant that is good at recommending gifts for a person. Based on user's chat history and preference, you must generate 5 very detailed and effective keywords to be used in serpapi google shopping search api (separated by comma)."
+    system_msg = "You are a helpful assistant that is good at recommending gifts for a person. Based on user's chat history and preference, you must generate 6 very detailed and effective keywords to be used in serpapi google shopping search api (separated by comma)."
     prompt = f"Chat history: {chat_histories}\nUser preference: {user_data}"
 
     response = openai.ChatCompletion.create(
@@ -57,7 +57,7 @@ def shorten_text(text, min, max):
     
     return response['choices'][0]['message']['content'].strip()
 
-def google_shopping_search(query, num_results = 5):
+def google_shopping_search(query, num_results = 6):
     params = {
         "api_key": SERP_API_KEY,
         "engine": "google_shopping",
@@ -69,15 +69,17 @@ def google_shopping_search(query, num_results = 5):
 
     search = GoogleSearch(params)
     results = search.get_dict()
+    print(results)
     products = []
 
     for item in results.get("shopping_results", []):
         product = {
-            "name": shorten_text(item.get("title"), 5, 8),
-            "product_url": item.get("link"),
+            "name": shorten_text(item.get("title"), 1, 3),
+            "shop_url": item.get("link"),
             "img_url": item.get("thumbnail"),
-            "price": item.get("price")
+            "price": "S" + item.get("price")
         }
         products.append(product)
 
+    print(products)
     return products

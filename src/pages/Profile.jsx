@@ -19,7 +19,7 @@ export default function Profile() {
     return (
         <>
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
-            <ProfileHeader 
+            <ProfileHeader
                 name="Bob Smith"
                 bio="Living for the vibes 🌊"
                 birthday="12 Apr 2001"
@@ -40,7 +40,7 @@ export default function Profile() {
                                 key={index}
                                 image={item.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
                                 title={item.name}
-                                price={`S${item.price}`}
+                                price={`${item.price}`}
                             />
                         ))
                     ) : (

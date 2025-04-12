@@ -28,7 +28,7 @@ def get_amazon_product_details(url):
         # Product title
         title_element = wait.until(EC.visibility_of_element_located((By.ID, "productTitle")))
         product_title = title_element.text.strip()
-        shorten_title = shorten_text(product_title, 5, 8)
+        shorten_title = shorten_text(product_title, 1, 3)
 
         # Product image
         image = wait.until(EC.presence_of_element_located((By.ID, "landingImage")))
@@ -37,7 +37,7 @@ def get_amazon_product_details(url):
         # Price image
         price_whole = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-whole")))
         price_fraction = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "a-price-fraction")))
-        price = "$" + price_whole.text.strip() + "." + price_fraction.text.strip()
+        price = "S$" + price_whole.text.strip() + "." + price_fraction.text.strip()
 
         # FOR DEBUG
         # print("✅ Title:", shorten_title)
@@ -51,8 +51,9 @@ def get_amazon_product_details(url):
 
     driver.quit()
     return {
-        "title": shorten_title,
-        "image": img_src,
+        "name": shorten_title,
+        "img_url": img_src,
+        "shop_url": url,
         "price": price
     }
 
