@@ -2,7 +2,7 @@ import { ChevronLeft, Video, Phone, Plus, Camera, Mic } from 'lucide-react';
 import ChatBubble from '../components/ChatBubble.jsx';
 import ProfilePicture from '../assets/user7.jpg';
 import ChatBackground from '../assets/backdrop.jpg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const chat_histories = [[
     {
@@ -45,9 +45,9 @@ const chat_histories = [[
 export default function PrivateChat() {
     const navigate = useNavigate();
     const handleBack = () => {
-        navigate(-1); // Go back to previous page
+        navigate(-1);
     };
-    
+
 
     const messages = chat_histories[0];
 
@@ -60,14 +60,18 @@ export default function PrivateChat() {
                         <button onClick={handleBack} className="text-[var(--color-c-black-2)]">
                             <ChevronLeft size="24" />
                         </button>
-                        <img
-                            src={ProfilePicture}
-                            alt="Profile"
-                            className="w-12 h-12 object-cover rounded-full"
-                        />
-                        <div>
-                            <h3 className="font-bold">Rachel</h3>
-                        </div>
+                        <Link to='/friend-profile'>
+                            <img
+                                src={ProfilePicture}
+                                alt="Profile"
+                                className="w-12 h-12 object-cover rounded-full"
+                            />
+                        </Link>
+                        <Link to='/friend-profile'>
+                            <div>
+                                <h3 className="font-bold">Rachel</h3>
+                            </div>
+                        </Link>
                     </div>
                     <div className="flex items-center gap-4">
                         <Video size="24" />

@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 export default function JoinWishlist({ image, title, price }) {
     return (
         <div className="bg-white w-full max-w-md overflow-hidden border border-[var(--color-c-green-3)] rounded-lg">
             <div className="p-2">
                 <div className="overflow-hidden bg-pink-50 mb-2">
-                    <img 
+                    <img
                         src={image}
                         alt={title}
                         className="w-full object-cover"
@@ -29,9 +31,11 @@ export default function JoinWishlist({ image, title, price }) {
                             </div>
                         </div>
 
-                        <button className="bg-green-200 text-black font-semibold py-3 px-4 rounded-full">
-                            Join
-                        </button>
+                        <Link to='/sub-group-chat/bunny'>
+                            <button className="bg-green-200 text-black font-semibold py-3 px-4 rounded-full">
+                                Join
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@ import ChatBubble from '../components/ChatBubble.jsx';
 import ProfilePicture from '../assets/user3.jpg';
 import ProductPicture from '../assets/products/sunglasses.jpg';
 import ChatBackground from '../assets/backdrop.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const chat_histories = [[
     {
@@ -54,6 +55,10 @@ const chat_histories = [[
 
 export default function PrivateChat() {
     const messages = chat_histories[0];
+    const navigate = useNavigate();
+    const handleBack = () => {
+        navigate(-1);
+    };
 
     return (
         <div className="relative h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: `url(${ChatBackground})` }}>
@@ -61,7 +66,9 @@ export default function PrivateChat() {
             <div className="flex items-end fixed top-0 left-0 right-0 h-32 p-4 bg-white/30 backdrop-blur-md z-10">
                 <div className="flex items-center justify-between w-full">
                     <div className="flex items-center gap-4">
-                        <ChevronLeft size="24" />
+                        <button onClick={handleBack} className="text-[var(--color-c-black-2)]">
+                            <ChevronLeft size="24" />
+                        </button>
                         <img
                             src={ProductPicture}
                             alt="Profile"
