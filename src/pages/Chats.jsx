@@ -13,6 +13,7 @@ export default function Chats() {
                 <Filter color="bg-green-300" text="All" />
                 <Filter color="bg-green-300" text="Groups" />
                 <Filter color="bg-green-300" text="Unread" />
+                <Filter color="bg-green-300" text="Favorites" />
             </div>
         </>
     );
