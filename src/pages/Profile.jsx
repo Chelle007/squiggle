@@ -3,10 +3,6 @@ import ProfileDescription from '../components/ProfileDescription';
 import SelfWishlist from '../components/SelfWishlist';
 import { getWishlist } from '../be/api-calls';
 
-import jordanImg from '../assets/products/jordan.png';
-import otterPlush from '../assets/products/otter-plushie.png';
-import zebraLamp from '../assets/products/zebra-lamp.png';
-
 import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 

@@ -36,6 +36,19 @@ wishlist = {
 
 chat_history = {
     "user_a": [[{
+            "timestamp": "10/04/2025, 11:33:22 AM",
+            "message": "Sunscreen, sunglasses, hat, powerbank, swimwear, raincoat"
+        },
+        {
+            "timestamp": "10/04/2025, 11:33:24 AM",
+            "message": "Don't forget to bring beach towel too."
+        },
+        {
+            "timestamp": "10/04/2025, 11:33:26 AM",
+            "message": "What pattern do you like?"
+        }]
+    ],
+    "user_b": [[{
             "timestamp": "10/04/2025, 11:33:21 AM",
             "message": "Hii I am going to travel to Bali next week, do you have any ideas regarding things that I should bring?"
         },
@@ -52,30 +65,18 @@ chat_history = {
             "message": "Huh pattern? I like flower patterns."
         }]
     ],
-    "user_b": [[{
-            "timestamp": "10/04/2025, 11:33:22 AM",
-            "message": "Sunscreen, sunglasses, hat, powerbank, swimwear, raincoat"
-        },
-        {
-            "timestamp": "10/04/2025, 11:33:24 AM",
-            "message": "Don't forget to bring beach towel too."
-        },
-        {
-            "timestamp": "10/04/2025, 11:33:26 AM",
-            "message": "What pattern do you like?"
-        }]
-    ],
 }
 
 user_data = {
     "user_a": {
-        "gender": "female",
-        "age": "19",
-        "favorite_color": "white",
-        "favorite_animal": "bunny",
+        "gender": "male",
+        "age": "24",
+        "favorite_color": "Red, Green, Blue",
+        "favorite_animal": "Otter, Elephant, Zebra",
+        "Hobbies": "Hiking, Swimming, Reading",
     },
     "user_b": {
-        "gender": "male",
+        "gender": "female",
         "age": "19",
         "favorite_color": "blue",
     },
