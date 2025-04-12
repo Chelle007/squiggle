@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 /* 
-    use the following syntax to use the custom colors in tailwind classes
+    Use the following syntax to use the custom colors in tailwind classes
     bg-[var(--color-c-black-1)]
 */
 :root {
     --color-c-green-1: #D9FDD3;
     --color-c-green-2: #F5FFEC;
-    --color-c-green-2: #2B3A1D;
+    --color-c-green-3: #2B3A1D;
 
     --color-c-white-1: #FFFFFF;
     --color-c-white-2: #F7F7F7;
@@ -17,8 +17,6 @@
     --color-c-black-3: #EAEAEA;
 
     --font-primary: "Roboto", "Times New Roman", serif;
-    /* --font-secondary: "Nunito", "Helvetica", sans-serif;
-    --font-tertiary: "Whisper", "Brush Script MT", cursive; */
 
     --text-c-p1: 36px;
     --text-c-p2: 24px;
