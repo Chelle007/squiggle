@@ -23,7 +23,7 @@ export default function PrivateChat() {
     const handleBack = () => {
         navigate(-1); // Go back to previous page
     };
-    
+
 
     const messages = chat_histories[0];
 
@@ -42,7 +42,7 @@ export default function PrivateChat() {
                             className="w-18 h-12 object-cover rounded-[8px]"
                         />
                         <div>
-                            <h3 className="font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">Jellycat Blossom Blush Bunny 'Cherry'</h3>
+                            <h3 className="font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[180px]">Jellycat Bunny 'Cherry'</h3>
                             <p className="text-[var(--color-c-black-2)] text-[var(--text-c-p4)] whitespace-nowrap overflow-hidden text-ellipsis max-w-[160px]">You, Timmy Thyme</p>
                         </div>
                     </div>
