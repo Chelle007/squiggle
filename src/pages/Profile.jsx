@@ -3,6 +3,8 @@ import ProfileDescription from '../components/ProfileDescription';
 import SelfWishlist from '../components/SelfWishlist';
 import { getWishlist } from '../be/api-calls';
 
+import userProfilePicture from '../assets/main-user.png';
+
 import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 
@@ -17,7 +19,12 @@ export default function Profile() {
     return (
         <>
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
-            <ProfileHeader />
+            <ProfileHeader 
+                name="Bob Smith"
+                bio="Living for the vibes 🌊"
+                birthday="12 Apr 2001"
+                image={userProfilePicture}
+            />
             <div className="flex flex-col justify-between mb-4 bg-[var(--color-c-white-1)] rounded-lg p-4 mt-4">
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-[var(--color-c-black-1)]">Wish List</h2>
