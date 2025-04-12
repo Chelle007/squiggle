@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
-import { motion } from "framer-motion";
+
 import { generateRecommendation, getProductDetailsFromShopUrl } from "../be/api-calls";
+import RecommendationCard from "../components/RecommendationCard";
+
 
 export default function AddWishlist() {
     const [searchTerm, setSearchTerm] = useState("");
+    const [popUpState, setPopUpState] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const [selectedCard, setSelectedCard] = useState(null);
+    const handleCardClick = (cardData) => {
+        console.log("You clicked:", cardData);
+        setSelectedCard(cardData);
+    };
 
     const [formData, setFormData] = useState({
         name: "",
@@ -15,6 +25,19 @@ export default function AddWishlist() {
         price: "",
         notes: "",
     });
+
+    useEffect(() => {
+        if (selectedCard) {
+            setFormData({
+                name: selectedCard.name,
+                link: selectedCard.link,
+                price: selectedCard.price,
+                notes: "",
+            });
+            setSelectedImage(selectedCard.image);
+            setPopUpState(false);
+        }
+    }, [selectedCard]);
 
     const userWishlistSearch = async () => {
         setLoading(true);
@@ -50,17 +73,9 @@ export default function AddWishlist() {
         });
     };
 
-
-    const goTo = (index) => {
-        if (index >= 0 && index < recommendations.length) {
-            setCurrentIndex(index);
-            updateFormData(recommendations[index]);
-        }
-    };
-
     return (
-        <div className="p-4 bg-gray-100 min-h-screen pb-24">
-            <h1 className="text-2xl font-semibold mb-4">Add to Wishlist</h1>
+        <div className="p-4 min-h-screen pb-24">
+            <h1 className="text-2xl mb-4">Add to Wishlist</h1>
 
             {/* Search bar */}
             <div className="flex items-center bg-white rounded-full px-4 py-2 mb-4 shadow">
@@ -71,7 +86,10 @@ export default function AddWishlist() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button onClick={userWishlistSearch} disabled={loading}>
+                <button onClick={() => {
+                    userWishlistSearch();
+                    setPopUpState(true);
+                }}>
                     {loading ? (
                         <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
                     ) : (
@@ -83,107 +101,88 @@ export default function AddWishlist() {
             </div>
 
             {/* Swiper Section */}
-            <div className="bg-white rounded-xl shadow p-4">
-                {recommendations.length > 0 ? (
+            {popUpState === true ? (
+                <div className="grid grid-cols-2 gap-4">
+                    {recommendations.map((item, index) => (
+                        <RecommendationCard
+                            key={index}
+                            image={item.image}
+                            title={item.name}
+                            price={item.price}
+                            link={item.link}
+                            onClick={() => handleCardClick(item)}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="bg-white rounded-xl shadow p-4">
                     <div>
-                        <motion.div
-                            key={currentIndex}
-                            initial={{ opacity: 0.5, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="relative"
-                        >
-                            <img
-                                src={recommendations[currentIndex].image}
-                                alt="item"
-                                className="w-full h-60 object-cover rounded-lg"
-                            />
+                        <div className="w-full h-60 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
+                            {selectedImage ? (
+                                <img src={selectedImage} alt="Selected product" className="h-full object-contain" />
+                            ) : (
+                                <span className="text-gray-500">Choose an image (optional)</span>
+                            )}
+                        </div>
 
-                            {/* Swipe hint text */}
-                            <div className="absolute bottom-2 w-full text-center text-xs text-white bg-black bg-opacity-30 py-1 rounded-b">
-                                Swipe or tap dots below
+                        <div className="mt-4 space-y-3 text-sm">
+                            <div>
+                                <label className="text-gray-500">Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, name: e.target.value })
+                                    }
+                                    className="w-full border-b p-1 outline-none"
+                                />
                             </div>
-                        </motion.div>
-
-                        {/* Dot Navigation */}
-                        <div className="flex justify-center mt-3 space-x-2">
-                            {recommendations.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    className={`w-3 h-3 rounded-full ${idx === currentIndex
-                                        ? "bg-blue-500"
-                                        : "bg-gray-300"
-                                        }`}
-                                    onClick={() => goTo(idx)}
-                                ></button>
-                            ))}
+                            <div>
+                                <label className="text-gray-500">Link</label>
+                                <input
+                                    type="text"
+                                    name="link"
+                                    value={formData.link}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, link: e.target.value })
+                                    }
+                                    className="w-full border-b p-1 outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-gray-500">Price</label>
+                                <input
+                                    type="text"
+                                    name="price"
+                                    value={formData.price}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, price: e.target.value })
+                                    }
+                                    className="w-full border-b p-1 outline-none"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-gray-500">Notes</label>
+                                <input
+                                    type="text"
+                                    name="notes"
+                                    value={formData.notes}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, notes: e.target.value })
+                                    }
+                                    placeholder="Additional notes (eg. color, size, etc)"
+                                    className="w-full border-b p-1 outline-none"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex justify-between mt-6">
+                            <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
+                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200">Save</button>
                         </div>
                     </div>
-                ) : (
-                    <div className="w-full h-60 bg-gray-200 flex items-center justify-center rounded-lg text-gray-500">
-                        Choose an image (optional)
-                    </div>
-                )}
-
-                {/* Form */}
-                <div className="mt-4 space-y-3 text-sm">
-                    <div>
-                        <label className="text-gray-500">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={(e) =>
-                                setFormData({ ...formData, name: e.target.value })
-                            }
-                            className="w-full border-b p-1 outline-none"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-gray-500">Link</label>
-                        <input
-                            type="text"
-                            name="link"
-                            value={formData.link}
-                            onChange={(e) =>
-                                setFormData({ ...formData, link: e.target.value })
-                            }
-                            className="w-full border-b p-1 outline-none"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-gray-500">Price</label>
-                        <input
-                            type="text"
-                            name="price"
-                            value={formData.price}
-                            onChange={(e) =>
-                                setFormData({ ...formData, price: e.target.value })
-                            }
-                            className="w-full border-b p-1 outline-none"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-gray-500">Notes</label>
-                        <input
-                            type="text"
-                            name="notes"
-                            value={formData.notes}
-                            onChange={(e) =>
-                                setFormData({ ...formData, notes: e.target.value })
-                            }
-                            placeholder="Additional notes (eg. color, size, etc)"
-                            className="w-full border-b p-1 outline-none"
-                        />
-                    </div>
                 </div>
-
-                {/* Buttons */}
-                <div className="flex justify-between mt-6">
-                    <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
-                    <button className="w-1/2 ml-2 py-2 rounded bg-green-200">Save</button>
-                </div>
-            </div>
-        </div>
+            )}
+        </div >
     );
 }

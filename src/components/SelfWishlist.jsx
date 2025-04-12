@@ -2,6 +2,7 @@ import { Pencil } from "lucide-react";
 
 export default function SelfWishlist({ image, title, price }) {
     return (
+        
         <div className="w-45 max-w-sm border rounded-lg shadow-sm bg-[var(--color-c-green-1)] border-[var(--color-c-green-2)] relative">
             <div className="relative w-full pt-[100%] rounded-t-lg overflow-hidden">
                 <img
@@ -13,7 +14,9 @@ export default function SelfWishlist({ image, title, price }) {
                 <button
                 className="absolute top-2 right-2 z-10 p-2 bg-white bg-opacity-80 rounded-full hover:bg-opacity-100 transition border border-[var(--color-c-green-3)]"
                 >
-                    <Pencil className="w-4 h-4 text-gray-700" />
+                    <Link to="/sub-group-chat" className="flex flex-col items-center">
+                        <Pencil className="w-4 h-4 text-gray-700" />
+                    </Link>
                 </button>
             </div>
 
