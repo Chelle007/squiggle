@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 /* 
-    Use the following syntax to use the custom colors in tailwind classes
+    use the following syntax to use the custom colors in tailwind classes
     bg-[var(--color-c-black-1)]
 */
 :root {
-    --color-c-green-1: #FFB6C1;
-    --color-c-green-2: #FFDDE8;
-    --color-c-green-3: #E77390;
+    --color-c-green-1: #C8FF9E;
+    --color-c-green-2: #F5FFEC;
+    --color-c-green-2: #2B3A1D;
 
     --color-c-white-1: #FFFFFF;
     --color-c-white-2: #F7F7F7;
@@ -17,11 +17,15 @@
     --color-c-black-3: #EAEAEA;
 
     --font-primary: "Roboto", "Times New Roman", serif;
+    /* --font-secondary: "Nunito", "Helvetica", sans-serif;
+    --font-tertiary: "Whisper", "Brush Script MT", cursive; */
 
-    --text-c-p1: 36px;
-    --text-c-p2: 24px;
+    --text-c-p1: 24px;
+    --text-c-p2: 20px;
     --text-c-p3: 16px;
-    --text-c-p4: 12px;
+    --text-c-p4: 14px;
+    --text-c-p5: 12px;
+    --text-c-p6: 10px;
 }
 
 @layer base {
@@ -32,24 +36,24 @@
     }
     h2 {
         font-family: var(--font-primary);
-        font-size: var(--text-2xl);
+        font-size: var(--text-3xl);
         line-height: 100%;
     }
     h3 {
         font-family: var(--font-primary);
-        font-size: var(--text-base);
+        font-size: var(--text-2xl);
     }
     h4 {
         font-family: var(--font-primary);
-        font-size: var(--text-xs);
+        font-size: var(--text-xl);
     }
     h5 {
         font-family: var(--font-primary);
-        font-size: var(--text-xs);
+        font-size: var(--text-lg);
     }
     h6 {
         font-family: var(--font-primary);
-        font-size: var(--text-xs);
+        font-size: var(--text-base);
     }
 
     p {
