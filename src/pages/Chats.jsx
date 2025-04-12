@@ -13,22 +13,22 @@ import Profile8 from "../assets/michelle.jpeg";
 
 export default function Chats() {
     const friendsData = [
-        {image: Profile, name: "Rachel Green", message: "Huh pattern? I like flower patterns"},
-        {image: Profile1, name: "Alex Bobby", message: "Hell yea, dude!"},
-        {image: Profile2, name: "Humbert Pummel", message: "KFC it is then"},
-        {image: Profile3, name: "Lego Saurus", message: "k"},
-        {image: Profile4, name: "Hill Jillen", message: "I see how it is"},
-        {image: Profile5, name: "Ray hummer", message: "Yea dounds good"},
-        {image: Profile6, name: "Violet Hill", message: "chill tonight?"},
-        {image: Profile8, name: "Hustler Hunter", message: "yay"},
+        { image: Profile, name: "Rachel Green", message: "Okay, will buy beach towel later too." },
+        { image: Profile1, name: "Alex Bobby", message: "Hell yea, dude!" },
+        { image: Profile2, name: "Humbert Pummel", message: "KFC it is then" },
+        { image: Profile3, name: "Lego Saurus", message: "k" },
+        { image: Profile4, name: "Hill Jillen", message: "I see how it is" },
+        { image: Profile5, name: "Ray hummer", message: "Yea dounds good" },
+        { image: Profile6, name: "Violet Hill", message: "chill tonight?" },
+        { image: Profile8, name: "Hustler Hunter", message: "yay" },
     ];
 
     return (
         <div className="py-16">
-        <div className="pb-4">
-            <h1 className="">Message</h1>
-        </div>
-            <Srcbar/>
+            <div className="pb-4">
+                <h1 className="">Message</h1>
+            </div>
+            <Srcbar />
             <div className="flex gap-2 py-4">
                 <Filter color="bg-[#C8FF9E]" text="All" />
                 <Filter color="bg-[var(--color-c-black-3)]" text="Groups" />
