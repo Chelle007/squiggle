@@ -6,40 +6,30 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const chat_histories = [[
     {
-        "timestamp": "10/04/2025, 11:21 AM",
-        "message": "Hii I am going to travel to Bali next week, do you have any ideas regarding things that I should bring?",
-        "sender": "friend"
+        "timestamp": "10/04/2025, 11:33:21 AM",
+        "message": "Hi! I am going to travel to Bali next week, do you have any ideas what I should bring?",
+        "sender": "self"
     },
     {
-        "timestamp": "10/04/2025, 11:22 AM",
+        "timestamp": "10/04/2025, 11:33:22 AM",
         "message": "Sunscreen, sunglasses, hat, powerbank, swimwear, raincoat",
-        "sender": "self"
+        "sender": "friend"
     },
     {
-        "timestamp": "10/04/2025, 11:23 AM",
+        "timestamp": "10/04/2025, 11:33:23 AM",
         "message": "Hmm noted, I don't have sunglasses and hat, maybe I will search for it at Bali.",
-        "sender": "friend"
+        "sender": "self"
     },
     {
-        "timestamp": "10/04/2025, 11:24 AM",
+        "timestamp": "10/04/2025, 11:33:24 AM",
         "message": "Don't forget to bring beach towel too.",
-        "sender": "self"
-    },
-    {
-        "timestamp": "10/04/2025, 11:25 AM",
-        "message": "Ohhh yeah beach towel! Will buy it later too once I reach Bali.",
         "sender": "friend"
     },
     {
-        "timestamp": "10/04/2025, 11:26 AM",
-        "message": "What pattern do you like?",
+        "timestamp": "10/04/2025, 11:33:25 AM",
+        "message": "Okay, will buy beach towel later too.",
         "sender": "self"
     },
-    {
-        "timestamp": "10/04/2025, 11:27 AM",
-        "message": "Huh pattern? I like flower patterns.",
-        "sender": "friend"
-    }
 ]];
 
 export default function PrivateChat() {

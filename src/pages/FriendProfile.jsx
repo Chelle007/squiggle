@@ -103,7 +103,12 @@ export default function FriendProfile() {
                 </div>
             </div>
 
-            <ProfileDescription />
+
+            <ProfileDescription
+                fav_color="White, Pink"
+                fav_animal="Bunny"
+                hobbies="Reading"
+            />
             <QuickJoin />
 
             {/* BUDGET MODAL */}

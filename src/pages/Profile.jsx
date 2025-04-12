@@ -30,7 +30,7 @@ export default function Profile() {
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-[var(--color-c-black-1)]">Wish List</h2>
                     <Link to='/add-wishlist'>
-                        <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
+                        <button className="p-2 rounded-full hover:bg-gray-100 transition bg-[var(--color-c-green-1)]">
                             <Plus className="w-6 h-6 text-gray-500" />
                         </button>
                     </Link>
@@ -52,7 +52,11 @@ export default function Profile() {
                 </div>
             </div>
 
-            <ProfileDescription />
+            <ProfileDescription
+                fav_color="Blue, Mint Green"
+                fav_animal="Capybara"
+                hobbies="Reading, Hiking, Painting"
+            />
 
             <br />
             <br />
