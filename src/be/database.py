@@ -6,7 +6,7 @@ wishlist = {
             "name": "Supima Cotton Crew Neck T-Shirt",
             "img_url": "https://www.uniqlo.com/jp/ja/contents/feature/masterpiece/common/img/product/item_05_kv.jpg?240112",
             "shop_url": "https://www.uniqlo.com/sg/en/products/E455365-000?colorCode=COL65&sizeCode=SMA005&istCompanyId=4d9c5d8f-302d-4f66-8407-acd79c161268&istFeedId=a288f40d-0d89-4fe6-ab91-ee14c78b59b2&istItemId=qwmqmlppi&istBid=t",
-            "price": "$19.90",
+            "price": "S$19.90",
             "notes": "size L",
             "added_by": "user_a",
             "joined_users": []
@@ -17,7 +17,7 @@ wishlist = {
             "name": "Jellycat Blossom Blush Bunny 'Cherry'",
             "img_url": "https://cdn11.bigcommerce.com/s-23s5gfmhr7/images/stencil/1280x1280/products/1692/49226/BASHFUL_BLOSSOMS_BLUSH_CHERRY__56734.1734429598.jpg?c=1",
             "shop_url": "https://shopee.sg/product/342358707/28224693907?gads_t_sig=VTJGc2RHVmtYMTlxTFVSVVRrdENkY0N5akVpcE5OamJEdjRRTHBOTzhmbXVHczAwMzlGL0dNY09HQWRmNDU2a09vVmMzemt1MXNMVjArMWk2RzBTaTNXMjltMFN1VTlvbzdyTjZQMFlvTWxxRHZDMUdjMEM5L1dFaGczQTc1dTM&gad_source=1&gbraid=0AAAAADPpRQRKQ-ve0Q1RqdIOGucjnHk8v&gclid=CjwKCAjw--K_BhB5EiwAuwYoysr4xaLhroJ0dqSQ2RPRRMcLsbZGUmW-21fzscW_4AyDGHFD4m4VvxoCT64QAvD_BwE",
-            "price": "$57.00",
+            "price": "S$57.00",
             "notes": "small",
             "added_by": "user_b",
             "joined_users": ["user_c", "user_d"]

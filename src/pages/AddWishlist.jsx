@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
 
+import { generateRecommendation, getProductDetailsFromShopUrl, addWishlist } from "../be/api-calls";
 import RecommendationCard from "../components/RecommendationCard";
 
 
@@ -11,8 +10,8 @@ export default function AddWishlist() {
     const [popUpState, setPopUpState] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [selectedImage, setSelectedImage] = useState(null);
-
+    const [loading, setLoading] = useState(false);
+    const [SelectedImage, setSelectedImage] = useState(null);
 
     const [selectedCard, setSelectedCard] = useState(null);
     const handleCardClick = (cardData) => {
@@ -22,7 +21,7 @@ export default function AddWishlist() {
 
     const [formData, setFormData] = useState({
         name: "",
-        link: "",
+        shop_url: "",
         price: "",
         notes: "",
     });
@@ -31,55 +30,66 @@ export default function AddWishlist() {
         if (selectedCard) {
             setFormData({
                 name: selectedCard.name,
-                link: selectedCard.link,
+                shop_url: selectedCard.shop_url,
                 price: selectedCard.price,
                 notes: "",
             });
-            setSelectedImage(selectedCard.image);
+            setSelectedImage(selectedCard.img_url);
             setPopUpState(false);
         }
-    }, [selectedCard]);    
+    }, [selectedCard]);
 
-    const generateRecommendations = () => {
-        const fakeData = [
-            {
-                name: "Pink Nike Shoes",
-                link: "https://nike.com/item1",
-                price: "100.00",
-                image: "https://placehold.co/600x400",
-            },
-            {
-                name: "Stylish Hat",
-                link: "https://example.com/hat",
-                price: "25.00",
-                image: "https://fakeimg.pl/500x500",
-            },
-            {
-                name: "Trendy Jacket",
-                link: "https://example.com/jacket",
-                price: "89.99",
-                image: "https://placehold.co/600x400",
-            },
-        ];
-        setRecommendations(fakeData);
-        setCurrentIndex(0);
-        updateFormData(fakeData[0]);
+    const userWishlistSearch = async () => {
+        setLoading(true);
+        try {
+            if (searchTerm.includes('www.amazon')) {
+                const result = await getProductDetailsFromShopUrl(searchTerm);
+                setPopUpState(false);
+                updateFormData(result);
+                setSelectedImage(result.img_url);
+            } else {
+                const user = "user_a";
+                const results = await generateRecommendation(user, searchTerm);
+
+                if (results) {
+                    setRecommendations(results);
+                    setCurrentIndex(0);
+                    updateFormData(results[0]);
+                } else {
+                    setRecommendations([]);
+                }
+            }
+        } catch (error) {
+            console.error("Failed to fetch wishlist recommendations / webscraping result:", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const updateFormData = (item) => {
         setFormData({
-            name: item.name,
-            link: item.link,
-            price: item.price,
+            name: item.name || "",
+            shop_url: item.shop_url || "",
+            price: item.price || "",
             notes: "",
         });
     };
 
-    const goTo = (index) => {
-        if (index >= 0 && index < recommendations.length) {
-            setCurrentIndex(index);
-            updateFormData(recommendations[index]);
-        }
+    const handleSaveClick = () => {
+        const user = "user_a";
+        const addedBy = "user_a";
+        const imgUrl = SelectedImage;
+        console.log("IMG URL " + imgUrl)
+
+        addWishlist(
+            user,
+            formData.name,
+            imgUrl,
+            formData.shop_url,
+            formData.price,
+            formData.notes,
+            addedBy
+        );
     };
 
     return (
@@ -95,40 +105,44 @@ export default function AddWishlist() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button 
-                    onClick={() => {
-                        generateRecommendations();
-                        setPopUpState(true);
-                    }}>
+                <button onClick={() => {
+                    userWishlistSearch();
+                    setPopUpState(true);
+                }}>
+                    {loading ? (
+                        <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></div>
+                    ) : (
+                        <FiSearch className="text-gray-500 text-lg" />
+                    )}
 
-                    <FiSearch className="text-gray-500 text-lg" />
                 </button>
+
             </div>
 
             {/* Swiper Section */}
             {popUpState === true ? (
                 <div className="grid grid-cols-2 gap-4">
                     {recommendations.map((item, index) => (
-                        <RecommendationCard 
+                        <RecommendationCard
                             key={index}
-                            image={item.image} 
-                            title={item.name} 
-                            price={item.price} 
-                            link={item.link} 
-                            onClick={() => handleCardClick(item)} 
+                            image={item.img_url}
+                            title={item.name}
+                            price={item.price}
+                            shop_url={item.shop_url}
+                            onClick={() => handleCardClick(item)}
                         />
                     ))}
                 </div>
             ) : (
                 <div className="bg-white rounded-xl shadow p-4">
                     <div>
-                    <div className="w-full h-60 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
-                        {selectedImage ? (
-                            <img src={selectedImage} alt="Selected product" className="h-full object-contain" />
-                        ) : (
-                            <span className="text-gray-500">Choose an image (optional)</span>
-                        )}
-                    </div>
+                        <div className="w-full h-60 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
+                            {SelectedImage ? (
+                                <img src={SelectedImage} alt="Selected product" className="h-full object-contain" />
+                            ) : (
+                                <span className="text-gray-500">Choose an img_url (optional)</span>
+                            )}
+                        </div>
 
                         <div className="mt-4 space-y-3 text-sm">
                             <div>
@@ -144,13 +158,13 @@ export default function AddWishlist() {
                                 />
                             </div>
                             <div>
-                                <label className="text-gray-500">Link</label>
+                                <label className="text-gray-500">shop_url</label>
                                 <input
                                     type="text"
-                                    name="link"
-                                    value={formData.link}
+                                    name="shop_url"
+                                    value={formData.shop_url}
                                     onChange={(e) =>
-                                        setFormData({ ...formData, link: e.target.value })
+                                        setFormData({ ...formData, shop_url: e.target.value })
                                     }
                                     className="w-full border-b p-1 outline-none"
                                 />
@@ -183,11 +197,11 @@ export default function AddWishlist() {
                         </div>
                         <div className="flex justify-between mt-6">
                             <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
-                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200">Save</button>
+                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200" onClick={handleSaveClick}>Save</button>
                         </div>
                     </div>
                 </div>
             )}
-        </div>
+        </div >
     );
 }
