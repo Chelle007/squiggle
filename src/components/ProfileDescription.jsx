@@ -10,7 +10,7 @@ export default function ProfileDescription() {
                 { label: "🏕️ Hobbies", value: "Gymnastic" }
             ].map((item, index) => (
                 <div key={index} className="mb-2">
-                    <h3 className="font-bold">{item.label}</h3>
+                    <h4 className="">{item.label}</h4>
                     <p className="text-[var(--color-c-black-2)]">{item.value}</p>
                 </div>
             ))}

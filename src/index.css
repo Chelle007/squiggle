@@ -20,12 +20,10 @@
     /* --font-secondary: "Nunito", "Helvetica", sans-serif;
     --font-tertiary: "Whisper", "Brush Script MT", cursive; */
 
-    --text-c-p1: 24px;
-    --text-c-p2: 20px;
+    --text-c-p1: 32px;
+    --text-c-p2: 24px;
     --text-c-p3: 16px;
-    --text-c-p4: 14px;
-    --text-c-p5: 12px;
-    --text-c-p6: 10px;
+    --text-c-p4: 12px;
 }
 
 @layer base {

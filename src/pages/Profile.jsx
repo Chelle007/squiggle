@@ -18,7 +18,7 @@ export default function Profile() {
     }, [user]);
 
     return (
-        <>
+        <div className="pt-16 h-[100vh]">
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
             <ProfileHeader
                 name="Bob Smith"
@@ -58,6 +58,6 @@ export default function Profile() {
             <br />
             <br />
             <br />
-        </>
+        </div>
     );
 }
