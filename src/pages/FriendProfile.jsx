@@ -2,6 +2,7 @@ import ProfileHeader from '../components/ProfileHeader';
 import ProfileDescription from '../components/ProfileDescription';
 import JoinWishlist from '../components/JoinWishlist';
 import QuickJoin from '../components/QuickJoin';
+import { Link } from 'react-router-dom';
 import { getWishlist, quickJoin } from '../be/api-calls';
 
 import rachelProfilePicture from '../assets/user7.jpg';
@@ -32,14 +33,14 @@ export default function FriendProfile() {
 
     const handleBudgetSubmit = async (e) => {
         e.preventDefault();
-    
+
         const parsedBudget = parseFloat(budget);
         if (isNaN(parsedBudget)) return;
-    
+
         try {
             const filtered = await quickJoin(user, parsedBudget);
             setFilteredWishlist(filtered);
-    
+
             // ✅ Show success popup if any result is returned
             if (filtered.length > 0) {
                 setMatchedProduct(filtered[0]); // Just show the first one as example
@@ -52,7 +53,7 @@ export default function FriendProfile() {
             setFilteredWishlist([]);
             setShowSuccessPopup(false);
         }
-    
+
         setShowBudgetModal(false);
         setBudget('');
     };
@@ -60,7 +61,7 @@ export default function FriendProfile() {
     return (
         <>
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
-            <ProfileHeader 
+            <ProfileHeader
                 name="Rachel Green"
                 bio="I like vegan food <3"
                 birthday="26 Dec 2005"
@@ -77,9 +78,11 @@ export default function FriendProfile() {
                         >
                             <Zap className="w-6 h-6 text-yellow-700" />
                         </button>
-                        <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
-                            <Plus className="w-6 h-6 text-gray-500" />
-                        </button>
+                        <Link to='/add-wishlist'>
+                            <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
+                                <Plus className="w-6 h-6 text-gray-500" />
+                            </button>
+                        </Link>
                     </div>
                 </div>
 

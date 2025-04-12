@@ -1,6 +1,7 @@
 import ProfileHeader from '../components/ProfileHeader';
 import ProfileDescription from '../components/ProfileDescription';
 import SelfWishlist from '../components/SelfWishlist';
+import { Link } from 'react-router-dom';
 import { getWishlist } from '../be/api-calls';
 
 import userProfilePicture from '../assets/main-user.png';
@@ -28,9 +29,11 @@ export default function Profile() {
             <div className="flex flex-col justify-between mb-4 bg-[var(--color-c-white-1)] rounded-lg p-4 mt-4">
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-[var(--color-c-black-1)]">Wish List</h2>
-                    <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
-                        <Plus className="w-6 h-6 text-gray-500" />
-                    </button>
+                    <Link to='/add-wishlist'>
+                        <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
+                            <Plus className="w-6 h-6 text-gray-500" />
+                        </button>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">

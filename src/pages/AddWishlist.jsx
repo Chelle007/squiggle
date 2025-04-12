@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
-
+import { useNavigate, Link } from "react-router-dom";
 import { generateRecommendation, getProductDetailsFromShopUrl, addWishlist } from "../be/api-calls";
 import RecommendationCard from "../components/RecommendationCard";
 
@@ -12,6 +12,11 @@ export default function AddWishlist() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(false);
     const [SelectedImage, setSelectedImage] = useState(null);
+    const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate(-1);
+    };
 
     const [selectedCard, setSelectedCard] = useState(null);
     const handleCardClick = (cardData) => {
@@ -196,8 +201,10 @@ export default function AddWishlist() {
                             </div>
                         </div>
                         <div className="flex justify-between mt-6">
-                            <button className="w-1/2 mr-2 py-2 rounded bg-gray-200">Cancel</button>
-                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200" onClick={handleSaveClick}>Save</button>
+                            <button className="w-1/2 mr-2 py-2 rounded bg-gray-200" onClick={handleBack}>Back</button>
+                            <button className="w-1/2 ml-2 py-2 rounded bg-green-200" onClick={handleSaveClick}>
+                                <Link to='/profile'>Save</Link>
+                            </button>
                         </div>
                     </div>
                 </div>
