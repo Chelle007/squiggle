@@ -59,7 +59,7 @@ export default function FriendProfile() {
     };
 
     return (
-        <div className="pt-16 h-[100vh]">
+        <div className="h-[100vh]">
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
             <ProfileHeader
                 name="Rachel Green"
@@ -101,10 +101,29 @@ export default function FriendProfile() {
                         <p className="col-span-2 text-sm text-gray-500">No wishlist items found within budget.</p>
                     )}
                 </div>
+
+                <div class="flex items-center w-full my-4">
+                    <div class="flex-grow h-px bg-black"></div>
+                    <span class="mx-4 text-xl font-bold tracking-wide whitespace-nowrap">INITIATED BY OTHERS</span>
+                    <div class="flex-grow h-px bg-black"></div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <JoinWishlist
+                        image={"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=904&hei=840&fmt=jpeg&qlt=95&.v=1728916305295" || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
+                        title="Macbook Pro 14"
+                        price={"S$" + 2199}
+                    />
+                </div>
             </div>
 
-            <ProfileDescription />
+            <ProfileDescription
+                fav_color="White, Pink"
+                fav_animal="Bunny"
+                hobbies="Reading"
+            />
             <QuickJoin />
+            
 
             {/* BUDGET MODAL */}
             {showBudgetModal && (
@@ -126,12 +145,14 @@ export default function FriendProfile() {
                                 onChange={(e) => setBudget(e.target.value)}
                                 min="0"
                             />
-                            <button
-                                type="submit"
-                                className="w-full bg-yellow-400 text-white py-2 rounded-md hover:bg-yellow-500 transition"
-                            >
-                                Submit
-                            </button>
+                            <Link to="/sub-group-chat/bunny">
+                                <button
+                                    type="submit"
+                                    className="w-full bg-yellow-400 text-white py-2 rounded-md hover:bg-yellow-500 transition"
+                                >
+                                    Submit
+                                </button>
+                            </Link>
                         </form>
                     </div>
                 </div>
