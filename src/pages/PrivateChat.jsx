@@ -47,8 +47,8 @@ export default function PrivateChat() {
     return (
         <div className="relative h-screen flex flex-col bg-cover bg-center" style={{ backgroundImage: `url(${ChatBackground})` }}>
             {/* Top bar */}
-            <div className="flex items-end h-32 p-4 bg-[var(--color-c-black-3)] bg-opacity-20">
-                <div className="flex items-center justify-between w-full">
+            <div className="fixed top-0 left-0 right-0 h-32 p-4 bg-white/30 backdrop-blur-md z-10">
+                <div className="flex items-center justify-between w-full h-full">
                     <div className="flex items-center gap-4">
                         <ChevronLeft size="24" />
                         <img
@@ -68,7 +68,7 @@ export default function PrivateChat() {
             </div>
 
             {/* Chat section */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto px-4 pt-36 pb-24 space-y-4">
                 {messages.length === 0 ? (
                     <p className="text-center text-gray-500">No messages</p>
                 ) : (
@@ -88,7 +88,7 @@ export default function PrivateChat() {
             </div>
 
             {/* Chat input bar */}
-            <div className="sticky bottom-0 h-20 bg-[var(--color-c-black-3)] bg-opacity-20 backdrop-blur-md flex items-center justify-center gap-4 px-4">
+            <div className="fixed bottom-0 left-0 right-0 h-20 bg-white/30 backdrop-blur-md flex items-center justify-center gap-4 px-4 z-10">
                 <Plus />
                 <div className="h-10 w-80 bg-[var(--color-c-white-1)] rounded-full px-4 flex items-center">
                     <span className="text-[var(--color-c-black-2)]">Enter a message</span>
