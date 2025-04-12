@@ -24,7 +24,7 @@ export default function Chats() {
     ];
 
     return (
-        <div className="py-16">
+        <div className="">
             <div className="pb-4">
                 <h1 className="">Message</h1>
             </div>

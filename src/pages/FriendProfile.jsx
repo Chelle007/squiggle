@@ -59,7 +59,7 @@ export default function FriendProfile() {
     };
 
     return (
-        <div className="pt-16 h-[100vh]">
+        <div className="h-[100vh]">
             <h1 className="text-[var(--color-c-black-1)]">Profile</h1>
             <ProfileHeader
                 name="Rachel Green"
@@ -131,12 +131,14 @@ export default function FriendProfile() {
                                 onChange={(e) => setBudget(e.target.value)}
                                 min="0"
                             />
-                            <button
-                                type="submit"
-                                className="w-full bg-yellow-400 text-white py-2 rounded-md hover:bg-yellow-500 transition"
-                            >
-                                Submit
-                            </button>
+                            <Link to="/sub-group-chat/bunny">
+                                <button
+                                    type="submit"
+                                    className="w-full bg-yellow-400 text-white py-2 rounded-md hover:bg-yellow-500 transition"
+                                >
+                                    Submit
+                                </button>
+                            </Link>
                         </form>
                     </div>
                 </div>
