@@ -49,3 +49,32 @@
 ```bash
 git clone https://github.com/your-username/squiggle.git
 cd squiggle
+
+2. Setup the Frontend
+```bash
+cd client
+npm install
+npm run dev
+
+3. Setup the Backend
+```bash
+cd ../server
+python -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python app.py
+
+
+🔧 Environment Variables
+Frontend (client/.env)
+```ini
+Copy
+Edit
+VITE_API_URL=http://localhost:5000
+
+Backend (server/.env)
+```ini
+Copy
+Edit
+FLASK_ENV=development
+SECRET_KEY=your-secret-key
