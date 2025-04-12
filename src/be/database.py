@@ -107,7 +107,7 @@ def add_wishlist(user, name, img_url, shop_url, price, notes, added_by):
     wishlist.get(user, []).append(item)
 
 def quick_join(user, budget):
-    items = wishlist.get("user_a", [])
+    items = wishlist.get("user_b", [])
     
     # Filter out items without a valid price, then sort by price descending
     valid_items = []

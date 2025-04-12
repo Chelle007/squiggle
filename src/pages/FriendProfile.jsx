@@ -13,7 +13,9 @@ export default function FriendProfile() {
     const [wishlist, setWishlist] = useState([]);
     const [filteredWishlist, setFilteredWishlist] = useState([]);
     const [showBudgetModal, setShowBudgetModal] = useState(false);
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false); // State for success popup
     const [budget, setBudget] = useState('');
+    const [matchedProduct, setMatchedProduct] = useState(null); // Store matched product data
 
     const user = "user_b";
 
@@ -36,11 +38,19 @@ export default function FriendProfile() {
     
         try {
             const filtered = await quickJoin(user, parsedBudget);
-            setFilteredWishlist(filtered); // This should now be defined
-            console.log("Filtered wishlist:", filtered);
+            setFilteredWishlist(filtered);
+    
+            // ✅ Show success popup if any result is returned
+            if (filtered.length > 0) {
+                setMatchedProduct(filtered[0]); // Just show the first one as example
+                setShowSuccessPopup(true);
+            } else {
+                setShowSuccessPopup(false);
+            }
         } catch (error) {
             console.error("Error filtering wishlist:", error);
             setFilteredWishlist([]);
+            setShowSuccessPopup(false);
         }
     
         setShowBudgetModal(false);
@@ -122,6 +132,29 @@ export default function FriendProfile() {
                     </div>
                 </div>
             )}
+
+            {/* SUCCESS POPUP */}
+            {showSuccessPopup && matchedProduct && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
+                    <div className="bg-white rounded-2xl p-6 w-[90%] max-w-sm shadow-xl relative">
+                        <button
+                            onClick={() => setShowSuccessPopup(false)}
+                            className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                            Success! Here's something within your budget 🎁
+                        </h3>
+                        <JoinWishlist
+                            image={matchedProduct.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
+                            title={matchedProduct.name}
+                            price={matchedProduct.price}
+                        />
+                    </div>
+                </div>
+            )}
+
 
             <br />
             <br />
