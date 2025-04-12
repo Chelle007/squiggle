@@ -35,7 +35,7 @@ def generate_recommendation_with_keyword():
     keyword = data.get("keyword")
 
     search_keyword = preference_analysis_with_keyword(get_chat_history(user), get_user_data(user), keyword)
-    serpapi_list = google_shopping_search(search_keyword, 5)
+    serpapi_list = google_shopping_search(search_keyword, 6)
 
     return jsonify(serpapi_list)
 
@@ -49,6 +49,7 @@ def generate_recommendation_without_keyword():
     serpapi_list = []
 
     for search_keyword in search_keyword_list:
+        print("SEARCH " + search_keyword)
         serpapi_list.append(google_shopping_search(search_keyword, 1)[0])
 
     return jsonify(serpapi_list)

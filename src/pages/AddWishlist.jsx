@@ -11,7 +11,7 @@ export default function AddWishlist() {
     const [recommendations, setRecommendations] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [SelectedImage, setSelectedImage] = useState(null);
 
     const [selectedCard, setSelectedCard] = useState(null);
     const handleCardClick = (cardData) => {
@@ -21,7 +21,7 @@ export default function AddWishlist() {
 
     const [formData, setFormData] = useState({
         name: "",
-        link: "",
+        shop_url: "",
         price: "",
         notes: "",
     });
@@ -30,11 +30,11 @@ export default function AddWishlist() {
         if (selectedCard) {
             setFormData({
                 name: selectedCard.name,
-                link: selectedCard.link,
+                shop_url: selectedCard.shop_url,
                 price: selectedCard.price,
                 notes: "",
             });
-            setSelectedImage(selectedCard.image);
+            setSelectedImage(selectedCard.img_url);
             setPopUpState(false);
         }
     }, [selectedCard]);
@@ -67,7 +67,7 @@ export default function AddWishlist() {
     const updateFormData = (item) => {
         setFormData({
             name: item.name || "",
-            link: item.link || "",
+            shop_url: item.shop_url || "",
             price: item.price || "",
             notes: "",
         });
@@ -106,10 +106,10 @@ export default function AddWishlist() {
                     {recommendations.map((item, index) => (
                         <RecommendationCard
                             key={index}
-                            image={item.image}
+                            image={item.img_url}
                             title={item.name}
                             price={item.price}
-                            link={item.link}
+                            shop_url={item.shop_url}
                             onClick={() => handleCardClick(item)}
                         />
                     ))}
@@ -118,10 +118,10 @@ export default function AddWishlist() {
                 <div className="bg-white rounded-xl shadow p-4">
                     <div>
                         <div className="w-full h-60 bg-gray-100 flex items-center justify-center rounded-lg overflow-hidden">
-                            {selectedImage ? (
-                                <img src={selectedImage} alt="Selected product" className="h-full object-contain" />
+                            {SelectedImage ? (
+                                <img src={SelectedImage} alt="Selected product" className="h-full object-contain" />
                             ) : (
-                                <span className="text-gray-500">Choose an image (optional)</span>
+                                <span className="text-gray-500">Choose an img_url (optional)</span>
                             )}
                         </div>
 
@@ -139,13 +139,13 @@ export default function AddWishlist() {
                                 />
                             </div>
                             <div>
-                                <label className="text-gray-500">Link</label>
+                                <label className="text-gray-500">shop_url</label>
                                 <input
                                     type="text"
-                                    name="link"
-                                    value={formData.link}
+                                    name="shop_url"
+                                    value={formData.shop_url}
                                     onChange={(e) =>
-                                        setFormData({ ...formData, link: e.target.value })
+                                        setFormData({ ...formData, shop_url: e.target.value })
                                     }
                                     className="w-full border-b p-1 outline-none"
                                 />
