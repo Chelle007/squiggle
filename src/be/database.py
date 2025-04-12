@@ -131,3 +131,6 @@ def quick_join(user, budget):
             return item
 
     return None
+
+
+print(quick_join("user_b", 100))

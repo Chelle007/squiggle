@@ -1,21 +1,19 @@
-import React from 'react';
-
-export default function JoinWishlist() {
+export default function JoinWishlist({ image, title, price }) {
     return (
         <div className="bg-white w-full max-w-md overflow-hidden border border-[var(--color-c-green-3)] rounded-lg">
             <div className="p-2">
                 <div className="overflow-hidden bg-pink-50 mb-2">
                     <img 
-                    src="https://placehold.co/600x400" 
-                    alt="Pastel Nike Air Force 1 shoes" 
-                    className="w-full object-cover"
+                        src={image}
+                        alt={title}
+                        className="w-full object-cover"
                     />
                 </div>
                 
                 <div>
                     <div>
-                        <h3 className="font-bold text-black">White Pinkish Nike Shoes</h3>
-                        <p className="font-semibold mt-2">$100.00</p>
+                        <h3 className="font-bold text-black">{title}</h3>
+                        <p className="font-semibold mt-2">{price}</p>
                     </div>
                     
                     <div className="flex items-center">
