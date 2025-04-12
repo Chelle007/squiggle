@@ -76,19 +76,26 @@ export async function generateRecommendation(user, searchPrompt) {
 }
 
 export async function getProductDetailsFromShopUrl(shopUrl) {
-    fetch(`http://127.0.0.1:5000/get-amazon-product-details?shopUrl=${encodeURIComponent(shopUrl)}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Product details: ", data);
-        })
-        .catch(error => {
-            console.error("Error fetching product details:", error);
+    try {
+        const response = await fetch('http://127.0.0.1:5000/get-amazon-product-details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ shop_link: shopUrl })
         });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Product details: ", data);
+        return data;
+    } catch (error) {
+        console.error("Error fetching product details:", error);
+        throw error;
+    }
 }
 
 function quickJoin(user, budget) {

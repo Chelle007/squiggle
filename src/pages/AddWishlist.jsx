@@ -44,7 +44,9 @@ export default function AddWishlist() {
         try {
             if (searchTerm.includes('www.amazon')) {
                 const result = await getProductDetailsFromShopUrl(searchTerm);
-                updateFormData(result)
+                setPopUpState(false);
+                updateFormData(result);
+                setSelectedImage(result.img_url);
             } else {
                 const user = "user_a";
                 const results = await generateRecommendation(user, searchTerm);

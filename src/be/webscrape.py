@@ -51,8 +51,9 @@ def get_amazon_product_details(url):
 
     driver.quit()
     return {
-        "title": shorten_title,
-        "image": img_src,
+        "name": shorten_title,
+        "img_url": img_src,
+        "shop_url": url,
         "price": price
     }
 

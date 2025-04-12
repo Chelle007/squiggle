@@ -75,7 +75,7 @@ def google_shopping_search(query, num_results = 6):
     for item in results.get("shopping_results", []):
         product = {
             "name": shorten_text(item.get("title"), 1, 3),
-            "product_url": item.get("link"),
+            "shop_url": item.get("link"),
             "img_url": item.get("thumbnail"),
             "price": "S" + item.get("price")
         }
