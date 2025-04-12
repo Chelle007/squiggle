@@ -1,4 +1,5 @@
 import { Pencil } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function SelfWishlist({ image, title, price }) {
     return (

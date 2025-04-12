@@ -1,13 +1,14 @@
 import ProfileHeader from '../components/ProfileHeader';
 import ProfileDescription from '../components/ProfileDescription';
 import JoinWishlist from '../components/JoinWishlist';
+import QuickJoin from '../components/QuickJoin';
 import { getWishlist } from '../be/api-calls';
 
 import userProfilePicture from '../assets/main-user.png';
 import rachelProfilePicture from '../assets/user7.jpg';
 
 import { useEffect, useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, Zap } from 'lucide-react';
 
 export default function FriendProfile() {
     const [wishlist, setWishlist] = useState([]);
@@ -29,9 +30,14 @@ export default function FriendProfile() {
             <div className="flex flex-col justify-between mb-4 bg-[var(--color-c-white-1)] rounded-lg p-4 mt-4">
                 <div className="flex items-center justify-between mb-4">
                     <h2 className="text-[var(--color-c-black-1)]">Wish List</h2>
-                    <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
-                        <Plus className="w-6 h-6 text-gray-500" />
-                    </button>
+                    <div className="flex gap-2">
+                        <button className="p-2 rounded-full hover:bg-yellow-100 transition border border-yellow-300 bg-yellow-200">
+                            <Zap className="w-6 h-6 text-yellow-700" />
+                        </button>
+                        <button className="p-2 rounded-full hover:bg-gray-100 transition border border-[var(--color-c-green-2)] bg-[var(--color-c-green-1)]">
+                            <Plus className="w-6 h-6 text-gray-500" />
+                        </button>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -51,6 +57,7 @@ export default function FriendProfile() {
             </div>
 
             <ProfileDescription />
+            <QuickJoin />
 
             <br />
             <br />
