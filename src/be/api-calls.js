@@ -14,7 +14,7 @@ function getWishlist(user) {
         });
 }
 
-function addWishlist(user, name, imgUrl, shopUrl, price, notes, addeBy) {
+function addWishlist(user, name, imgUrl, shopUrl, price, notes, addedBy) {
     fetch('http://127.0.0.1:5000/add-user-wishlist', {
         method: 'POST',
         headers: {
@@ -27,7 +27,7 @@ function addWishlist(user, name, imgUrl, shopUrl, price, notes, addeBy) {
             shopUrl,
             price,
             notes,
-            addeBy
+            addedBy
         })
     })
         .then(response => {
