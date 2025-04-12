@@ -49,12 +49,14 @@
 ```bash
 git clone https://github.com/your-username/squiggle.git
 cd squiggle
+```
 
 2. Setup the Frontend
 ```bash
 cd client
 npm install
 npm run dev
+```
 
 3. Setup the Backend
 ```bash
