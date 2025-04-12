@@ -4,6 +4,15 @@ import JoinWishlist from '../components/JoinWishlist';
 import QuickJoin from '../components/QuickJoin';
 import { Link } from 'react-router-dom';
 import { getWishlist, quickJoin } from '../be/api-calls';
+import user1 from '../assets/user1.jpg';
+import user2 from '../assets/user2.jpg';
+import user3 from '../assets/user3.jpg';
+import user4 from '../assets/user4.jpg';
+import user5 from '../assets/user5.jpg';
+import user6 from '../assets/user6.jpg';
+import user8 from '../assets/user8.jpg';
+import user9 from '../assets/user9.jpg';
+import user10 from '../assets/user10.jpg';
 
 import rachelProfilePicture from '../assets/user7.jpg';
 
@@ -95,6 +104,9 @@ export default function FriendProfile() {
                                 image={item.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
                                 title={item.name}
                                 price={`${item.price}`}
+                                user1Img={user8}
+                                user2Img={user9}
+                                user3Img={user10}
                             />
                         ))
                     ) : (
@@ -113,6 +125,9 @@ export default function FriendProfile() {
                         image={"https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=904&hei=840&fmt=jpeg&qlt=95&.v=1728916305295" || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
                         title="Macbook Pro 14"
                         price={"S$" + 2199}
+                        user1Img={user1}
+                        user2Img={user2}
+                        user3Img={user3}
                     />
                 </div>
             </div>
@@ -123,7 +138,7 @@ export default function FriendProfile() {
                 hobbies="Reading"
             />
             <QuickJoin />
-            
+
 
             {/* BUDGET MODAL */}
             {showBudgetModal && (
@@ -175,6 +190,9 @@ export default function FriendProfile() {
                             image={matchedProduct.img_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"}
                             title={matchedProduct.name}
                             price={matchedProduct.price}
+                            user1Img={user4}
+                            user2Img={user5}
+                            user3Img={user6}
                         />
                     </div>
                 </div>
