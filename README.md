@@ -10,25 +10,21 @@
 
 ## ✨ Features
 
-### 💬 Real-Time Chat
-- Sleek and responsive chat interface
-- Fast and smooth experience with React + Vite + TailwindCSS
-
-### 🎁 Gift Giving at Its Core
-- Send gifts right within the chat
-- Every gift is **100% unique** — it's publicly announced in real-time to preserve its meaning
-
-### 🤝 Joint Ventures for Gifting
-- Team up with friends or loved ones to co-purchase gifts
-- See live progress and who's contributing
-
 ### 🤖 AI-Powered Recommendations
 - AI suggests personalized gift ideas based on your chat history
 - Remembers context, keywords, and patterns to improve suggestions over time
+- Utilises OpenAI's GPT-4o model
 
-### 🗃️ Persistent Chat History
-- Past conversations and gift interactions are saved
-- A full timeline of your shared moments
+### 📝 Wishlist Management 
+User can add wishes by:
+- Type in the product name to fetch product details with SerpAPI
+- Paste the e-commerce link (e.g. Amazon) and get the product details with webscraping
+- Write their own wish
+
+### ⚡️ Quick Join
+- Just drop your budget and we’ll match you to a gift group
+- Team up with friends or loved ones to co-purchase gifts
+- See live progress and who's contributing
 
 ---
 
